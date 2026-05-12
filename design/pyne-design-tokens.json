@@ -1,0 +1,40 @@
+{
+  "brand": {
+    "name": "Pyne Technologies",
+    "personality": "fresh, funky, advanced, friendly, light-mode-only"
+  },
+  "color": {
+    "background": "#FFFDF7",
+    "foreground": "#1E2233",
+    "surface": "#FFFFFF",
+    "surfacePop": "#F5FBFF",
+    "line": "#DBE8EE",
+    "muted": "#5C6377",
+    "electricCyan": "#00B8FF",
+    "cyanStrong": "#0087D8",
+    "freshLime": "#B8FF2C",
+    "coral": "#FF6B5F",
+    "sunshine": "#FFD84D",
+    "lavender": "#C9BBFF",
+    "mint": "#92FFD0"
+  },
+  "typography": {
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "displayWeight": 900,
+    "headingWeight": 900,
+    "bodyWeight": 600,
+    "letterSpacing": 0
+  },
+  "shape": {
+    "buttonRadius": 999,
+    "cardRadius": 24,
+    "panelRadius": 30,
+    "heroMediaRadius": 34
+  },
+  "motion": {
+    "pageIntro": "fade up 26px, 700ms ease-out",
+    "cardHover": "translateY -8px with subtle rotate",
+    "marquee": "continuous horizontal client loop",
+    "reducedMotion": "disable repeating and scroll-linked animations"
+  }
+}
