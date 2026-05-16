@@ -1,19 +1,26 @@
 import {
+  BriefcaseBusiness,
   Bot,
   BrainCircuit,
+  Building2,
   ChartNoAxesCombined,
   Code2,
+  Coffee,
   Globe2,
   GraduationCap,
+  HeartPulse,
   LayoutDashboard,
   Megaphone,
   MessageCircle,
   Palette,
   PenTool,
   PanelsTopLeft,
+  Printer,
   Rocket,
+  ShoppingBag,
   Smartphone,
   Sparkles,
+  Truck,
   WandSparkles,
   Workflow
 } from "lucide-react";
@@ -31,10 +38,10 @@ export const brand = {
   name: "Pyne Technologies",
   shortName: "Pyne",
   email: "hello@pynetechnologies.com",
-  whatsappNumber: "910000000000",
-  whatsappLabel: "+91 00000 00000",
-  city: "Pune, India",
-  tagline: "Web, AI, apps, and brand systems with a little voltage in the presentation."
+  whatsappNumber: "919960756292",
+  whatsappLabel: "+91 99607 56292",
+  city: "Satara",
+  tagline: "Web, AI, apps, and brand systems with practical polish."
 };
 
 export const aiSolutions: AISolution[] = [
@@ -174,14 +181,14 @@ export const stats: StatItem[] = [
 ];
 
 export const clients: ClientLogo[] = [
-  { name: "FreshCart Studio", industry: "Retail" },
-  { name: "BrightLearn Halls", industry: "Education" },
-  { name: "PulseClinic", industry: "Healthcare" },
-  { name: "QuickPrint", industry: "Print" },
-  { name: "MetroNest", industry: "Real Estate" },
-  { name: "NovaCafe", industry: "Hospitality" },
-  { name: "FinSpark", industry: "Finance" },
-  { name: "RouteLoop", industry: "Logistics" }
+  { name: "FreshCart Studio", industry: "Retail", icon: ShoppingBag, accent: "#B8FF2C" },
+  { name: "BrightLearn Halls", industry: "Education", icon: GraduationCap, accent: "#00B8FF" },
+  { name: "PulseClinic", industry: "Healthcare", icon: HeartPulse, accent: "#FF6B5F" },
+  { name: "QuickPrint", industry: "Print", icon: Printer, accent: "#FFD84D" },
+  { name: "MetroNest", industry: "Real Estate", icon: Building2, accent: "#C9BBFF" },
+  { name: "NovaCafe", industry: "Hospitality", icon: Coffee, accent: "#92FFD0" },
+  { name: "RouteLoop", industry: "Logistics", icon: Truck, accent: "#00B8FF" },
+  { name: "CraftDesk", industry: "Services", icon: BriefcaseBusiness, accent: "#FF6B5F" }
 ];
 
 export const processSteps = [

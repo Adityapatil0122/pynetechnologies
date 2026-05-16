@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 import { SectionIntro } from "@/components/section-intro";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -21,8 +22,9 @@ export default function AIPage() {
           description="Pyne plans AI around actual work: support, lead handling, reporting, operations, and internal tools."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {aiSolutions.map((solution) => (
-            <Card className="p-7" key={solution.slug}>
+          {aiSolutions.map((solution, index) => (
+            <Reveal key={solution.slug} delay={index * 0.06}>
+            <Card className="h-full p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(47,75,111,0.14)] sm:p-7">
               <solution.icon className="h-10 w-10 text-[var(--primary-strong)]" />
               <h2 className="mt-5 text-2xl font-black">{solution.title}</h2>
               <p className="mt-3 text-base leading-7 text-[var(--muted)]">{solution.description}</p>
@@ -41,6 +43,7 @@ export default function AIPage() {
                 </Link>
               </Button>
             </Card>
+            </Reveal>
           ))}
         </div>
       </div>

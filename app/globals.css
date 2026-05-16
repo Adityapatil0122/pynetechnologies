@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
 }
 
@@ -51,10 +52,12 @@ input,
 select,
 textarea {
   font: inherit;
+  min-width: 0;
 }
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 ::selection {
@@ -63,7 +66,7 @@ img {
 }
 
 .container-pyne {
-  width: min(1240px, calc(100% - 28px));
+  width: min(1240px, calc(100% - clamp(24px, 5vw, 56px)));
   margin-inline: auto;
 }
 
@@ -75,6 +78,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  max-width: 100%;
   border: 1px solid rgba(30, 34, 51, 0.1);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.76);
@@ -83,6 +87,10 @@ img {
   font-size: 0.84rem;
   font-weight: 800;
   box-shadow: 0 10px 30px rgba(0, 135, 216, 0.08);
+}
+
+.tap-clean {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .noise {
@@ -105,7 +113,9 @@ img {
 .gradient-text {
   background: linear-gradient(100deg, #00a8ff 0%, #58c900 34%, #ff6b5f 67%, #8c6bff 100%);
   background-clip: text;
+  background-size: 220% 100%;
   color: transparent;
+  animation: gradient-flow 7s ease-in-out infinite;
 }
 
 .focus-ring {
@@ -117,13 +127,102 @@ img {
   outline-color: var(--primary);
 }
 
+.hero-spin-slow {
+  animation: hero-spin 24s linear infinite;
+}
+
+.hero-spin-reverse {
+  animation: hero-spin-reverse 30s linear infinite;
+}
+
+.hero-breathe {
+  animation: hero-breathe 4.8s ease-in-out infinite;
+}
+
+.hero-float-pill {
+  animation: hero-float 5.5s ease-in-out infinite;
+}
+
+.hero-scan-css {
+  animation: hero-scan 2.5s ease-in-out infinite;
+}
+
+.hero-wave-bar {
+  height: var(--bar-height);
+  transform-origin: bottom;
+  animation: hero-wave 1.35s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes hero-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes hero-spin-reverse {
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes hero-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.015);
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(12px, 10px, 0);
+  }
+}
+
+@keyframes hero-scan {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(520%);
+  }
+}
+
+@keyframes hero-wave {
+  0%,
+  100% {
+    transform: scaleY(0.45);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+  html {
     scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
   }
 }

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Activity, ArrowRight, Check, Cpu, Gauge, MousePointerClick, Radio, Sparkles, Zap } from "lucide-react";
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { ContactForm } from "@/components/contact-form";
 import { SectionIntro } from "@/components/section-intro";
@@ -77,7 +77,7 @@ function HeroSection() {
         <motion.div className="min-w-0 max-w-full" initial={false} animate="visible" variants={fadeUp} transition={{ duration: 0.7, ease: "easeOut" }}>
           <span className="eyebrow">
             <Sparkles className="h-4 w-4" />
-            Fresh digital builds from Pune
+            Digital product studio from Pune
           </span>
           <h1 className="mt-6 max-w-full break-words text-4xl font-black leading-[0.98] tracking-normal text-[var(--foreground)] sm:max-w-4xl sm:text-6xl lg:text-7xl">
             <span className="block">Websites, apps</span>
@@ -96,7 +96,7 @@ function HeroSection() {
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/services/website-development">
+              <Link href="/services">
                 Explore services
                 <MousePointerClick className="h-5 w-5" />
               </Link>
@@ -136,18 +136,18 @@ function LaunchCockpit() {
       initial={false}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
-      className="relative min-h-[430px] min-w-0 max-w-full pt-4 sm:min-h-[500px] lg:-mt-4"
+      className="relative min-h-[390px] min-w-0 max-w-full pt-4 sm:min-h-[500px] lg:-mt-4"
       aria-label="Interactive Pyne launch cockpit"
     >
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-        className="absolute left-1/2 top-[47%] h-[330px] w-[330px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[rgba(30,34,51,0.14)] sm:h-[430px] sm:w-[430px]"
+        className="hero-spin-slow absolute left-1/2 top-[47%] h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[rgba(30,34,51,0.14)] sm:h-[430px] sm:w-[430px]"
       />
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
-        className="absolute left-1/2 top-[47%] h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgba(0,184,255,0.22)] sm:h-[330px] sm:w-[330px]"
+        className="hero-spin-reverse absolute left-1/2 top-[47%] h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgba(0,184,255,0.22)] sm:h-[330px] sm:w-[330px]"
       />
       {cockpitModes.map((item, index) => {
         const angle = (index / cockpitModes.length) * Math.PI * 2 - Math.PI / 2;
@@ -157,18 +157,30 @@ function LaunchCockpit() {
         const Icon = item.icon;
 
         return (
-          <button
+          <motion.button
             key={item.label}
             onClick={() => setActive(index)}
+            whileTap={{ scale: 0.92 }}
+            animate={index === active ? { scale: [1, 1.08, 1] } : { scale: 1 }}
+            transition={index === active ? { duration: 1.4, repeat: Infinity, ease: "easeInOut" } : { duration: 0.2 }}
             className="focus-ring absolute z-20 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl border border-white bg-white shadow-[0_16px_40px_rgba(47,75,111,0.16)] transition hover:scale-105 sm:h-14 sm:w-14"
             style={{ left: `${x}%`, top: `${y}%` }}
             aria-label={`Show ${item.label}`}
           >
+            {index === active ? (
+              <motion.span
+                aria-hidden
+                className="absolute inset-0 rounded-2xl border-2"
+                style={{ borderColor: item.accent }}
+                animate={{ opacity: [0.8, 0], scale: [1, 1.55] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: "easeOut" }}
+              />
+            ) : null}
             <Icon className="h-6 w-6" style={{ color: item.accent }} />
-          </button>
+          </motion.button>
         );
       })}
-      <div className="relative z-10 mx-auto mt-16 max-w-[390px] overflow-hidden rounded-[32px] border border-white bg-white/90 p-4 shadow-[0_30px_80px_rgba(47,75,111,0.18)] backdrop-blur sm:mt-14 sm:p-5">
+      <div className="hero-breathe relative z-10 mx-auto mt-16 max-w-[390px] overflow-hidden rounded-[32px] border border-white bg-white/90 p-4 shadow-[0_30px_80px_rgba(47,75,111,0.18)] backdrop-blur sm:mt-14 sm:p-5">
         <div className="rounded-[26px] bg-[#f5fbff] p-4">
           <div className="flex items-center justify-between gap-3">
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-black text-[var(--primary-strong)] shadow-sm">
@@ -186,7 +198,7 @@ function LaunchCockpit() {
                 key={mode.title}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-1 text-3xl font-black leading-none"
+                className="mt-1 text-2xl font-black leading-none sm:text-3xl"
               >
                 {mode.title}
               </motion.h2>
@@ -197,12 +209,13 @@ function LaunchCockpit() {
               animate={{ scale: 1, rotate: 0 }}
               className="rounded-[22px] bg-white p-4 text-center shadow-sm"
             >
-              <p className="text-3xl font-black" style={{ color: mode.accent }}>
+              <p className="text-2xl font-black sm:text-3xl" style={{ color: mode.accent }}>
                 {mode.metric}
               </p>
               <p className="mt-1 max-w-24 text-xs font-black leading-4 text-[var(--muted)]">{mode.metricLabel}</p>
             </motion.div>
           </div>
+          <SignalPlayground accent={mode.accent} labels={mode.stack} active={active} />
           <div className="mt-5 grid grid-cols-3 gap-2">
             {mode.stack.map((label, index) => (
               <motion.div
@@ -235,14 +248,63 @@ function LaunchCockpit() {
       <motion.div
         animate={{ x: [0, 12, 0], y: [0, 10, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute right-3 top-3 z-20 rounded-full bg-[var(--lime)] px-4 py-3 text-xs font-black shadow-lg sm:right-6 sm:text-sm"
+        className="hero-float-pill absolute right-3 top-3 z-20 rounded-full bg-[var(--lime)] px-4 py-3 text-xs font-black shadow-lg sm:right-6 sm:text-sm"
       >
-        no static hero
+        shipping mode
       </motion.div>
-      <div className="relative z-10 mx-auto mt-4 max-w-[390px] rounded-[24px] border border-[rgba(30,34,51,0.1)] bg-[#ffd84d] p-4 shadow-[0_18px_44px_rgba(47,75,111,0.12)]">
-        <p className="text-sm font-black leading-5">Click the orbit buttons. The cockpit retunes itself for web, AI, apps, and campaigns.</p>
-      </div>
     </motion.div>
+  );
+}
+
+function SignalPlayground({ accent, labels, active }: { accent: string; labels: string[]; active: number }) {
+  const bars = [44, 72, 56, 88, 62, 78];
+
+  return (
+    <div className="relative mt-5 h-28 overflow-hidden rounded-[24px] border border-white/80 bg-white/72 shadow-inner">
+      <div
+        className="absolute inset-0 opacity-70"
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, rgba(30,34,51,0.06) 1px, transparent 1px), linear-gradient(rgba(30,34,51,0.05) 1px, transparent 1px)",
+          backgroundSize: "24px 24px"
+        }}
+      />
+      <div
+        aria-hidden
+        className="hero-scan-css absolute inset-y-0 w-20 bg-gradient-to-r from-transparent via-white to-transparent opacity-70"
+      />
+      <div className="relative z-10 flex h-full items-end justify-between gap-2 px-4 pb-4 pt-5">
+        <div className="flex h-full flex-1 items-end gap-2">
+          {bars.map((height, index) => (
+            <span
+              aria-hidden
+              key={`${active}-${height}-${index}`}
+              className="hero-wave-bar w-full rounded-full"
+              style={
+                {
+                  "--bar-height": `${height}px`,
+                  animationDelay: `${index * 0.12}s`,
+                  background: index % 2 ? accent : "var(--primary)"
+                } as CSSProperties
+              }
+            />
+          ))}
+        </div>
+        <div className="grid min-w-28 gap-2">
+          {labels.map((label, index) => (
+            <motion.div
+              key={label}
+              className="flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[10px] font-black shadow-sm"
+              animate={{ x: index === active % labels.length ? [0, -3, 0] : 0 }}
+              transition={{ duration: 1.3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="h-2 w-2 rounded-full" style={{ background: index === active % labels.length ? accent : "#dbe8ee" }} />
+              <span className="truncate">{label}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -269,8 +331,8 @@ function ServicesSection() {
       <div className="container-pyne">
         <SectionIntro
           eyebrow="Web services"
-          title="Everything needed to make your digital presence bounce."
-          description="From fast websites to campaign visuals, Pyne keeps the pieces connected: strategy, design, code, automation, and polish."
+          title="Everything needed to make your digital presence work better."
+          description="From fast websites to campaign visuals, Pyne keeps strategy, design, code, automation, and polish connected."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
@@ -317,7 +379,7 @@ function AISection() {
         <SectionIntro
           eyebrow="AI solutions"
           title="Useful AI, wired into real business work."
-          description="No smoke show. Just chatbots, integrations, dashboards, and automations that remove repeated work and make teams faster."
+          description="Chatbots, integrations, dashboards, and automations that remove repeated work and make teams faster."
           center={false}
         />
         <div className="grid gap-4 sm:grid-cols-2">
@@ -348,8 +410,8 @@ function ProcessSection() {
       <div className="container-pyne">
         <SectionIntro
           eyebrow="How we build"
-          title="A process with enough structure to ship and enough play to surprise."
-          description="The path is simple: understand, storyboard, build, polish. The output should feel sharp on day one and easy to extend after launch."
+          title="A clear path from idea to launch."
+          description="We understand the audience, storyboard the flow, build the system, and polish the experience so it is easy to use and easier to extend."
         />
         <div className="relative mt-14 grid gap-5 md:grid-cols-4">
           <div className="absolute left-8 right-8 top-12 hidden h-1 rounded-full bg-gradient-to-r from-[var(--primary)] via-[var(--lime)] to-[var(--coral)] md:block" />
@@ -381,9 +443,9 @@ function ClientsSection() {
     <section className="section-y overflow-hidden bg-[#e9fbff]">
       <div className="container-pyne">
         <SectionIntro
-          eyebrow="Clients and use cases"
-          title="Built for teams that want the internet to feel less beige."
-          description="Sample sectors and brand systems Pyne is ready to support, from study halls and clinics to retail, finance, and logistics."
+          eyebrow="Who we help"
+          title="Built for businesses that need cleaner digital experiences."
+          description="Pyne supports startups, education teams, local businesses, clinics, retail brands, hospitality teams, real estate, and service companies with practical digital systems."
         />
       </div>
       <div className="mt-12 flex overflow-hidden">
@@ -393,9 +455,14 @@ function ClientsSection() {
           className="flex min-w-max gap-4 px-4"
         >
           {[...clients, ...clients].map((client, index) => (
-            <div key={`${client.name}-${index}`} className="w-64 rounded-[24px] border border-[rgba(30,34,51,0.08)] bg-white p-5 shadow-sm">
-              <p className="text-xl font-black">{client.name}</p>
-              <p className="mt-2 text-sm font-bold text-[var(--muted)]">{client.industry}</p>
+            <div key={`${client.name}-${index}`} className="flex w-64 items-center gap-4 rounded-[24px] border border-[rgba(30,34,51,0.08)] bg-white p-4 shadow-sm sm:w-72 sm:p-5">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl" style={{ background: client.accent }}>
+                <client.icon className="h-7 w-7 text-[var(--foreground)]" />
+              </div>
+              <div className="min-w-0">
+                <p className="truncate text-xl font-black">{client.name}</p>
+                <p className="mt-1 text-sm font-bold text-[var(--muted)]">{client.industry}</p>
+              </div>
             </div>
           ))}
         </motion.div>

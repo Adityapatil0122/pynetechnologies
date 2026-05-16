@@ -5,7 +5,7 @@ export function Input({ className, ...props }: React.InputHTMLAttributes<HTMLInp
   return (
     <input
       className={cn(
-        "focus-ring h-12 w-full rounded-2xl border border-[rgba(30,34,51,0.14)] bg-white px-4 text-sm font-semibold text-[var(--foreground)] placeholder:text-[#8a91a5]",
+        "focus-ring h-12 min-w-0 w-full rounded-2xl border border-[rgba(30,34,51,0.14)] bg-white px-4 text-sm font-semibold text-[var(--foreground)] placeholder:text-[#8a91a5]",
         className
       )}
       {...props}
@@ -17,19 +17,7 @@ export function Textarea({ className, ...props }: React.TextareaHTMLAttributes<H
   return (
     <textarea
       className={cn(
-        "focus-ring min-h-32 w-full resize-y rounded-2xl border border-[rgba(30,34,51,0.14)] bg-white px-4 py-3 text-sm font-semibold text-[var(--foreground)] placeholder:text-[#8a91a5]",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-
-export function Select({ className, ...props }: React.SelectHTMLAttributes<HTMLSelectElement>) {
-  return (
-    <select
-      className={cn(
-        "focus-ring h-12 w-full rounded-2xl border border-[rgba(30,34,51,0.14)] bg-white px-4 text-sm font-semibold text-[var(--foreground)]",
+        "focus-ring min-h-32 min-w-0 w-full resize-y rounded-2xl border border-[rgba(30,34,51,0.14)] bg-white px-4 py-3 text-sm font-semibold text-[var(--foreground)] placeholder:text-[#8a91a5]",
         className
       )}
       {...props}

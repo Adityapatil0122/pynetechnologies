@@ -1,11 +1,13 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
-import type { ReactNode } from "react";
-import { Mail, MessageCircle } from "lucide-react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import type { KeyboardEvent, ReactNode } from "react";
+import { Check, ChevronDown, Mail, MessageCircle } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { Input, Label, Select, Textarea } from "@/components/ui/form-fields";
+import { Input, Label, Textarea } from "@/components/ui/form-fields";
 import { aiSolutions, brand, services } from "@/lib/site-data";
+import { cn } from "@/lib/utils";
 
 const interests = ["Website", "App", "AI", "Marketing", "WhatsApp", "Design", "Not sure yet"];
 
@@ -51,43 +53,31 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
   return (
     <form onSubmit={handleSubmit} className="grid gap-4">
       <div className={compact ? "grid gap-4" : "grid gap-4 md:grid-cols-2"}>
-        <Field label="Name">
-          <Input required value={form.name} onChange={(event) => update("name", event.target.value)} placeholder="Your name" />
+        <Field label="Full Name">
+          <Input required value={form.name} onChange={(event) => update("name", event.target.value)} placeholder="Your Name" />
         </Field>
         <Field label="Email">
-          <Input required type="email" value={form.email} onChange={(event) => update("email", event.target.value)} placeholder="you@example.com" />
+          <Input required type="email" value={form.email} onChange={(event) => update("email", event.target.value)} placeholder="Your Email" />
         </Field>
       </div>
-      <div className={compact ? "grid gap-4" : "grid gap-4 md:grid-cols-3"}>
+      <div className={compact ? "grid gap-4" : "grid gap-4 md:grid-cols-2"}>
         <Field label="Phone">
-          <Input value={form.phone} onChange={(event) => update("phone", event.target.value)} placeholder="+91..." />
+          <Input value={form.phone} onChange={(event) => update("phone", event.target.value)} placeholder="Your Phone" />
         </Field>
-        <Field label="Interest">
-          <Select value={form.interest} onChange={(event) => update("interest", event.target.value)}>
-            {interests.map((interest) => (
-              <option key={interest} value={interest}>
-                {interest}
-              </option>
-            ))}
-          </Select>
-        </Field>
-        <Field label="Service">
-          <Select value={form.service} onChange={(event) => update("service", event.target.value)}>
-            {serviceOptions.map((service) => (
-              <option key={service} value={service}>
-                {service}
-              </option>
-            ))}
-          </Select>
+        <Field label="Project Type">
+          <PyneDropdown value={form.interest} options={interests} onChange={(value) => update("interest", value)} />
         </Field>
       </div>
+      <Field label="Service">
+        <PyneDropdown value={form.service} options={serviceOptions} onChange={(value) => update("service", value)} />
+      </Field>
       <Field label="Message">
-        <Textarea value={form.message} onChange={(event) => update("message", event.target.value)} placeholder="Tell us what you want to build..." />
+        <Textarea value={form.message} onChange={(event) => update("message", event.target.value)} placeholder="Tell us about your project..." />
       </Field>
       <div className="flex flex-col gap-3 sm:flex-row">
         <Button type="submit" variant="pop" className="flex-1">
           <MessageCircle className="h-4 w-4" />
-          Send on WhatsApp
+          Send Message
         </Button>
         <Button asChild variant="outline" className="flex-1">
           <a href={emailHref}>
@@ -97,6 +87,116 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
         </Button>
       </div>
     </form>
+  );
+}
+
+function PyneDropdown({
+  value,
+  options,
+  onChange
+}: {
+  value: string;
+  options: string[];
+  onChange: (value: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const selectedIndex = Math.max(0, options.indexOf(value));
+
+  useEffect(() => {
+    function handlePointerDown(event: PointerEvent) {
+      if (!rootRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, []);
+
+  function choose(nextValue: string) {
+    onChange(nextValue);
+    setOpen(false);
+  }
+
+  function handleKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+    if (event.key === "Escape") {
+      setOpen(false);
+      return;
+    }
+
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setOpen((current) => !current);
+      return;
+    }
+
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      const direction = event.key === "ArrowDown" ? 1 : -1;
+      const nextIndex = (selectedIndex + direction + options.length) % options.length;
+      onChange(options[nextIndex]);
+      setOpen(true);
+    }
+  }
+
+  return (
+    <div ref={rootRef} className="relative">
+      <button
+        type="button"
+        className={cn(
+          "focus-ring flex h-12 w-full min-w-0 items-center justify-between gap-3 rounded-2xl border bg-white px-4 text-left text-sm font-bold text-[var(--foreground)] shadow-sm transition",
+          open
+            ? "border-[var(--primary)] shadow-[0_0_0_4px_rgba(0,184,255,0.16)]"
+            : "border-[rgba(30,34,51,0.14)] hover:border-[var(--primary)]"
+        )}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        onClick={() => setOpen((current) => !current)}
+        onKeyDown={handleKeyDown}
+      >
+        <span className="truncate">{value}</span>
+        <ChevronDown className={cn("h-4 w-4 shrink-0 text-[var(--primary-strong)] transition", open && "rotate-180")} />
+      </button>
+
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 8, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="absolute left-0 right-0 top-full z-50 overflow-hidden rounded-[22px] border border-[rgba(30,34,51,0.1)] bg-white p-2 shadow-[0_24px_70px_rgba(47,75,111,0.18)]"
+            role="listbox"
+          >
+            <div className="max-h-64 overflow-y-auto pr-1">
+              {options.map((option) => {
+                const selected = option === value;
+
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    role="option"
+                    aria-selected={selected}
+                    onClick={() => choose(option)}
+                    className={cn(
+                      "flex w-full items-center justify-between gap-3 rounded-2xl px-4 py-3 text-left text-sm font-black transition",
+                      selected
+                        ? "bg-[#e9fbff] text-[var(--primary-strong)]"
+                        : "text-[var(--foreground)] hover:bg-[#f2ffd0]"
+                    )}
+                  >
+                    <span className="truncate">{option}</span>
+                    {selected ? <Check className="h-4 w-4 shrink-0" /> : null}
+                  </button>
+                );
+              })}
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </div>
   );
 }
 

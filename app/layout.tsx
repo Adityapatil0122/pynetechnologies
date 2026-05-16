@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
+import { ChatLauncher } from "@/components/ai/ChatLauncher";
 import { CookieBanner } from "@/components/cookie-banner";
+import { FloatingQuickNav } from "@/components/floating-quick-nav";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -14,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Pyne Technologies"
   },
   description:
-    "Pyne Technologies builds fresh websites, apps, AI solutions, WhatsApp automation, digital marketing systems, UI/UX, and graphics.",
+    "Pyne Technologies builds websites, apps, AI solutions, WhatsApp automation, digital marketing systems, UI/UX, and graphics.",
   openGraph: {
     title: "Pyne Technologies",
     description: "Web, AI, apps, marketing, and brand systems with bright motion and practical delivery.",
@@ -31,7 +33,9 @@ export const metadata: Metadata = {
     images: ["/pyne-logo.svg"]
   },
   icons: {
-    icon: "/pyne-logo.svg"
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg"
   }
 };
 
@@ -47,7 +51,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
+        <FloatingQuickNav />
         <FloatingWhatsApp />
+        <ChatLauncher />
         <CookieBanner />
       </body>
     </html>

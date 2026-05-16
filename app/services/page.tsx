@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 import { SectionIntro } from "@/components/section-intro";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -21,9 +22,10 @@ export default function ServicesPage() {
           description="Each service can stand alone, but the real fun starts when strategy, design, code, and campaigns work as one system."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <Card className="overflow-hidden p-0" key={service.slug}>
-              <img src={service.image} alt="" className="h-44 w-full object-cover" />
+          {services.map((service, index) => (
+            <Reveal key={service.slug} delay={index * 0.05}>
+            <Card className="group h-full overflow-hidden p-0 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(47,75,111,0.14)]">
+              <img src={service.image} alt="" className="h-44 w-full object-cover transition duration-700 group-hover:scale-105 sm:h-48" />
               <div className="p-6">
                 <service.icon className="h-9 w-9" style={{ color: service.accent }} />
                 <h2 className="mt-4 text-2xl font-black">{service.title}</h2>
@@ -44,6 +46,7 @@ export default function ServicesPage() {
                 </Button>
               </div>
             </Card>
+            </Reveal>
           ))}
         </div>
       </div>

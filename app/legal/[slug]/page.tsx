@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Reveal } from "@/components/reveal";
 import { legalPages } from "@/lib/site-data";
 
 type Props = {
@@ -27,11 +28,11 @@ export default async function LegalPage({ params }: Props) {
 
   return (
     <section className="section-y">
-      <div className="container-pyne max-w-3xl">
+      <Reveal className="container-pyne max-w-3xl">
         <span className="eyebrow">Legal</span>
-        <h1 className="mt-6 text-5xl font-black leading-tight">{page.title}</h1>
+        <h1 className="mt-6 text-4xl font-black leading-tight sm:text-5xl">{page.title}</h1>
         <p className="mt-3 text-sm font-bold text-[var(--muted)]">Last updated: {page.updated}</p>
-        <div className="mt-10 space-y-9 rounded-[28px] border border-[rgba(30,34,51,0.1)] bg-white p-7 shadow-[0_18px_44px_rgba(47,75,111,0.08)]">
+        <div className="mt-10 space-y-9 rounded-[28px] border border-[rgba(30,34,51,0.1)] bg-white p-5 shadow-[0_18px_44px_rgba(47,75,111,0.08)] sm:p-7">
           {page.sections.map((section) => (
             <section key={section.heading}>
               <h2 className="text-2xl font-black">{section.heading}</h2>
@@ -43,7 +44,7 @@ export default async function LegalPage({ params }: Props) {
             </section>
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
