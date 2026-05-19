@@ -33,7 +33,7 @@ export async function POST(request: Request) {
   const lastUserMessage = [...messages].reverse().find((message) => message.role === "user")?.content ?? "";
 
   if (!lastUserMessage) {
-    return NextResponse.json({ reply: "Ask me about Pyne services, AI solutions, apps, websites, pricing, or contact details." });
+    return NextResponse.json({ reply: "Ask me about Pyne services, automation, apps, websites, pricing, or contact details." });
   }
 
   const apiUrl = process.env.PYNE_AI_API_URL;

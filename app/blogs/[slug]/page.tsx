@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
+import { seoMetadata } from "@/lib/seo";
 import { blogPosts } from "@/lib/site-data";
 
 type Props = {
@@ -18,10 +19,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = blogPosts.find((item) => item.slug === slug);
   if (!post) return {};
-  return {
+  return seoMetadata({
     title: post.title,
-    description: post.excerpt
-  };
+    description: post.excerpt,
+    path: `/blogs/${post.slug}`,
+    keywords: [post.category, "Pyne Technologies blog", "digital business tips"],
+    image: post.image
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {

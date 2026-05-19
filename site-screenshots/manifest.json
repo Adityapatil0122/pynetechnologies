@@ -1,0 +1,253 @@
+[
+  {
+    "index": 1,
+    "label": "Home",
+    "route": "/",
+    "url": "http://127.0.0.1:3005/",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\01-home-home.jpg",
+    "skipped": true
+  },
+  {
+    "index": 2,
+    "label": "Services",
+    "route": "/services",
+    "url": "http://127.0.0.1:3005/services",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\02-services-services.jpg",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "index": 3,
+    "label": "Service - website-development",
+    "route": "/services/website-development",
+    "url": "http://127.0.0.1:3005/services/website-development",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\03-service-website-development-services-website-development.jpg",
+    "width": 1920,
+    "height": 2400
+  },
+  {
+    "index": 4,
+    "label": "Service - app-development",
+    "route": "/services/app-development",
+    "url": "http://127.0.0.1:3005/services/app-development",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\04-service-app-development-services-app-development.jpg",
+    "width": 1920,
+    "height": 2400
+  },
+  {
+    "index": 5,
+    "label": "Service - digital-marketing",
+    "route": "/services/digital-marketing",
+    "url": "http://127.0.0.1:3005/services/digital-marketing",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\05-service-digital-marketing-services-digital-marketing.jpg",
+    "width": 1920,
+    "height": 2400
+  },
+  {
+    "index": 6,
+    "label": "Service - whatsapp-business",
+    "route": "/services/whatsapp-business",
+    "url": "http://127.0.0.1:3005/services/whatsapp-business",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\06-service-whatsapp-business-services-whatsapp-business.jpg",
+    "width": 1920,
+    "height": 2400
+  },
+  {
+    "index": 7,
+    "label": "Service - ui-ux-design",
+    "route": "/services/ui-ux-design",
+    "url": "http://127.0.0.1:3005/services/ui-ux-design",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\07-service-ui-ux-design-services-ui-ux-design.jpg",
+    "width": 1920,
+    "height": 2768
+  },
+  {
+    "index": 8,
+    "label": "Service - graphics-designing",
+    "route": "/services/graphics-designing",
+    "url": "http://127.0.0.1:3005/services/graphics-designing",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\08-service-graphics-designing-services-graphics-designing.jpg",
+    "width": 1920,
+    "height": 2601
+  },
+  {
+    "index": 9,
+    "label": "Automation",
+    "route": "/automation",
+    "url": "http://127.0.0.1:3005/automation",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\09-automation-automation.jpg",
+    "width": 1920,
+    "height": 1917
+  },
+  {
+    "index": 10,
+    "label": "Automation - chatbots",
+    "route": "/automation/chatbots",
+    "url": "http://127.0.0.1:3005/automation/chatbots",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\10-automation-chatbots-automation-chatbots.jpg",
+    "width": 1920,
+    "height": 1891
+  },
+  {
+    "index": 11,
+    "label": "Automation - custom-solutions",
+    "route": "/automation/custom-solutions",
+    "url": "http://127.0.0.1:3005/automation/custom-solutions",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\11-automation-custom-solutions-automation-custom-solutions.jpg",
+    "width": 1920,
+    "height": 1921
+  },
+  {
+    "index": 12,
+    "label": "Automation - integration",
+    "route": "/automation/integration",
+    "url": "http://127.0.0.1:3005/automation/integration",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\12-automation-integration-automation-integration.jpg",
+    "width": 1920,
+    "height": 1891
+  },
+  {
+    "index": 13,
+    "label": "Automation - analytics",
+    "route": "/automation/analytics",
+    "url": "http://127.0.0.1:3005/automation/analytics",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\13-automation-analytics-automation-analytics.jpg",
+    "width": 1920,
+    "height": 1921
+  },
+  {
+    "index": 14,
+    "label": "Automation legacy index",
+    "route": "/ai",
+    "url": "http://127.0.0.1:3005/ai",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\14-automation-legacy-index-ai.jpg",
+    "width": 1920,
+    "height": 1917
+  },
+  {
+    "index": 15,
+    "label": "Automation legacy - chatbots",
+    "route": "/ai/chatbots",
+    "url": "http://127.0.0.1:3005/ai/chatbots",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\15-automation-legacy-chatbots-ai-chatbots.jpg",
+    "width": 1920,
+    "height": 1891
+  },
+  {
+    "index": 16,
+    "label": "Automation legacy - custom-solutions",
+    "route": "/ai/custom-solutions",
+    "url": "http://127.0.0.1:3005/ai/custom-solutions",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\16-automation-legacy-custom-solutions-ai-custom-solutions.jpg",
+    "width": 1920,
+    "height": 1921
+  },
+  {
+    "index": 17,
+    "label": "Automation legacy - integration",
+    "route": "/ai/integration",
+    "url": "http://127.0.0.1:3005/ai/integration",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\17-automation-legacy-integration-ai-integration.jpg",
+    "width": 1920,
+    "height": 1891
+  },
+  {
+    "index": 18,
+    "label": "Automation legacy - analytics",
+    "route": "/ai/analytics",
+    "url": "http://127.0.0.1:3005/ai/analytics",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\18-automation-legacy-analytics-ai-analytics.jpg",
+    "width": 1920,
+    "height": 1921
+  },
+  {
+    "index": 19,
+    "label": "Blogs",
+    "route": "/blogs",
+    "url": "http://127.0.0.1:3005/blogs",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\19-blogs-blogs.jpg",
+    "width": 1920,
+    "height": 2147
+  },
+  {
+    "index": 20,
+    "label": "Blog - websites-that-feel-alive",
+    "route": "/blogs/websites-that-feel-alive",
+    "url": "http://127.0.0.1:3005/blogs/websites-that-feel-alive",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\20-blog-websites-that-feel-alive-blogs-websites-that-feel-alive.jpg",
+    "width": 1920,
+    "height": 2257
+  },
+  {
+    "index": 21,
+    "label": "Blog - whatsapp-automation-for-small-teams",
+    "route": "/blogs/whatsapp-automation-for-small-teams",
+    "url": "http://127.0.0.1:3005/blogs/whatsapp-automation-for-small-teams",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\21-blog-whatsapp-automation-for-small-teams-blogs-whatsapp-automation-for-small-teams.jpg",
+    "width": 1920,
+    "height": 2256
+  },
+  {
+    "index": 22,
+    "label": "Blog - automation-before-hype",
+    "route": "/blogs/automation-before-hype",
+    "url": "http://127.0.0.1:3005/blogs/automation-before-hype",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\22-blog-automation-before-hype-blogs-automation-before-hype.jpg",
+    "width": 1920,
+    "height": 2113
+  },
+  {
+    "index": 23,
+    "label": "Clients",
+    "route": "/clients",
+    "url": "http://127.0.0.1:3005/clients",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\23-clients-clients.jpg",
+    "width": 1920,
+    "height": 1595
+  },
+  {
+    "index": 24,
+    "label": "Contact",
+    "route": "/contact",
+    "url": "http://127.0.0.1:3005/contact",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\24-contact-contact.jpg",
+    "width": 1920,
+    "height": 1856
+  },
+  {
+    "index": 25,
+    "label": "Study Room",
+    "route": "/products/study-room",
+    "url": "http://127.0.0.1:3005/products/study-room",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\25-study-room-products-study-room.jpg",
+    "width": 1920,
+    "height": 2681
+  },
+  {
+    "index": 26,
+    "label": "Legal - privacy-policy",
+    "route": "/legal/privacy-policy",
+    "url": "http://127.0.0.1:3005/legal/privacy-policy",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\26-legal-privacy-policy-legal-privacy-policy.jpg",
+    "width": 1920,
+    "height": 1427
+  },
+  {
+    "index": 27,
+    "label": "Legal - cookie-policy",
+    "route": "/legal/cookie-policy",
+    "url": "http://127.0.0.1:3005/legal/cookie-policy",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\27-legal-cookie-policy-legal-cookie-policy.jpg",
+    "width": 1920,
+    "height": 1311
+  },
+  {
+    "index": 28,
+    "label": "Legal - terms-of-service",
+    "route": "/legal/terms-of-service",
+    "url": "http://127.0.0.1:3005/legal/terms-of-service",
+    "file": "C:\\pynetechnologies\\site-screenshots\\images\\28-legal-terms-of-service-legal-terms-of-service.jpg",
+    "width": 1920,
+    "height": 1311
+  }
+]

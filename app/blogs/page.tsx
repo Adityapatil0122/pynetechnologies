@@ -3,12 +3,15 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { SectionIntro } from "@/components/section-intro";
+import { seoMetadata } from "@/lib/seo";
 import { blogPosts } from "@/lib/site-data";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMetadata({
   title: "Blogs",
-  description: "Pyne Technologies notes on web design, automation, AI, marketing, and product presentation."
-};
+  description: "Read simple notes from Pyne Technologies on web design, automation, marketing, and product planning.",
+  path: "/blogs",
+  keywords: ["web design blog", "automation blog", "digital marketing tips"]
+});
 
 export default function BlogsPage() {
   return (
@@ -16,8 +19,9 @@ export default function BlogsPage() {
       <div className="container-pyne">
         <SectionIntro
           eyebrow="Blogs"
-          title="Ideas for making digital work feel sharper."
-          description="Short, practical reads from the Pyne perspective."
+          title="Simple ideas for better digital work."
+          description="Short, practical reads on websites, automation, marketing, and product planning."
+          headingLevel="h1"
         />
         <div className="mt-12 grid gap-7">
           {blogPosts.map((post, index) => (

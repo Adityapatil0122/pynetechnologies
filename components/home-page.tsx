@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Activity, ArrowRight, Check, Cpu, Gauge, MousePointerClick, Radio, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Check, Cpu, Gauge, MousePointerClick, Radio, Smartphone, Sparkles, Zap } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState, type CSSProperties } from "react";
 import { AnimatedCounter } from "@/components/animated-counter";
@@ -18,37 +18,37 @@ const fadeUp = {
 
 const cockpitModes = [
   {
-    label: "Website pulse",
-    title: "Homepage spark",
+    label: "Website check",
+    title: "Homepage plan",
     metric: "1.8s",
-    metricLabel: "first load target",
+    metricLabel: "load target",
     accent: "#00B8FF",
     icon: Gauge,
     stack: ["Hero", "SEO", "Speed"]
   },
   {
-    label: "AI wiring",
-    title: "Lead brain",
+    label: "Lead flow",
+    title: "Lead response",
     metric: "24/7",
-    metricLabel: "reply loop",
+    metricLabel: "reply support",
     accent: "#B8FF2C",
     icon: Cpu,
     stack: ["Chatbot", "Routing", "Handoff"]
   },
   {
-    label: "App mode",
+    label: "App plan",
     title: "Product flow",
     metric: "4",
     metricLabel: "core screens",
     accent: "#FF6B5F",
-    icon: Activity,
+    icon: Smartphone,
     stack: ["Login", "Dashboard", "Reports"]
   },
   {
-    label: "Campaign lift",
-    title: "Launch signal",
+    label: "Campaign plan",
+    title: "Launch plan",
     metric: "3x",
-    metricLabel: "creative hooks",
+    metricLabel: "creative ideas",
     accent: "#FFD84D",
     icon: Radio,
     stack: ["Ads", "Social", "WhatsApp"]
@@ -77,16 +77,16 @@ function HeroSection() {
         <motion.div className="min-w-0 max-w-full" initial={false} animate="visible" variants={fadeUp} transition={{ duration: 0.7, ease: "easeOut" }}>
           <span className="eyebrow">
             <Sparkles className="h-4 w-4" />
-            Digital product studio from Pune
+            Digital product studio in Satara
           </span>
           <h1 className="mt-6 max-w-full break-words text-4xl font-black leading-[0.98] tracking-normal text-[var(--foreground)] sm:max-w-4xl sm:text-6xl lg:text-7xl">
-            <span className="block">Websites, apps</span>
-            <span className="block">and AI with a</span>
-            <span className="gradient-text block">bright little jolt.</span>
+            <span className="block">Clean websites</span>
+            <span className="block">and apps for</span>
+            <span className="gradient-text block">growing businesses.</span>
           </h1>
           <p className="mt-6 max-w-full text-lg leading-8 text-[var(--muted)] sm:max-w-2xl">
-            Pyne Technologies builds animated websites, useful apps, WhatsApp systems, AI workflows, digital campaigns,
-            and brand visuals that feel modern without getting stiff.
+            Pyne Technologies builds clear websites, useful apps, WhatsApp automation, digital campaigns, and brand
+            visuals that help businesses look modern and work better.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="pop" size="lg">
@@ -137,7 +137,7 @@ function LaunchCockpit() {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
       className="relative min-h-[390px] min-w-0 max-w-full pt-4 sm:min-h-[500px] lg:-mt-4"
-      aria-label="Interactive Pyne launch cockpit"
+      aria-label="Interactive Pyne project planner"
     >
       <motion.div
         animate={{ rotate: 360 }}
@@ -185,7 +185,7 @@ function LaunchCockpit() {
           <div className="flex items-center justify-between gap-3">
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-black text-[var(--primary-strong)] shadow-sm">
               <Zap className="h-4 w-4" />
-              live launch cockpit
+              live project plan
             </span>
             <span className="rounded-full px-3 py-2 text-xs font-black" style={{ background: mode.accent }}>
               {mode.label}
@@ -193,7 +193,7 @@ function LaunchCockpit() {
           </div>
           <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-4">
             <div>
-              <p className="text-sm font-black text-[var(--muted)]">Now tuning</p>
+              <p className="text-sm font-black text-[var(--muted)]">Now improving</p>
               <motion.h2
                 key={mode.title}
                 initial={{ opacity: 0, y: 10 }}
@@ -250,7 +250,7 @@ function LaunchCockpit() {
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         className="hero-float-pill absolute right-3 top-3 z-20 rounded-full bg-[var(--lime)] px-4 py-3 text-xs font-black shadow-lg sm:right-6 sm:text-sm"
       >
-        shipping mode
+        launch mode
       </motion.div>
     </motion.div>
   );
@@ -331,8 +331,8 @@ function ServicesSection() {
       <div className="container-pyne">
         <SectionIntro
           eyebrow="Web services"
-          title="Everything needed to make your digital presence work better."
-          description="From fast websites to campaign visuals, Pyne keeps strategy, design, code, automation, and polish connected."
+          title="Everything needed to make your online presence work better."
+          description="From fast websites to campaign visuals, Pyne keeps strategy, design, code, automation, and launch support connected."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
@@ -377,9 +377,9 @@ function AISection() {
     <section className="section-y bg-[#f2ffd0]">
       <div className="container-pyne grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <SectionIntro
-          eyebrow="AI solutions"
-          title="Useful AI, wired into real business work."
-          description="Chatbots, integrations, dashboards, and automations that remove repeated work and make teams faster."
+          eyebrow="Automation"
+          title="Useful systems for real business work."
+          description="Chatbots, integrations, dashboards, and automation that reduce repeated work and help teams move faster."
           center={false}
         />
         <div className="grid gap-4 sm:grid-cols-2">
@@ -391,7 +391,7 @@ function AISection() {
               viewport={{ once: true }}
               transition={{ duration: 0.45, delay: index * 0.06 }}
             >
-              <Link href={`/ai/${solution.slug}`} className="block rounded-[24px] bg-white p-6 shadow-[0_18px_42px_rgba(47,75,111,0.08)] transition hover:-translate-y-1">
+              <Link href={`/automation/${solution.slug}`} className="block rounded-[24px] bg-white p-6 shadow-[0_18px_42px_rgba(47,75,111,0.08)] transition hover:-translate-y-1">
                 <solution.icon className="h-8 w-8 text-[var(--primary-strong)]" />
                 <h3 className="mt-5 text-xl font-black">{solution.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{solution.description}</p>
@@ -411,7 +411,7 @@ function ProcessSection() {
         <SectionIntro
           eyebrow="How we build"
           title="A clear path from idea to launch."
-          description="We understand the audience, storyboard the flow, build the system, and polish the experience so it is easy to use and easier to extend."
+          description="We understand the audience, plan the flow, build the system, and check the details so it is easy to use and simple to extend."
         />
         <div className="relative mt-14 grid gap-5 md:grid-cols-4">
           <div className="absolute left-8 right-8 top-12 hidden h-1 rounded-full bg-gradient-to-r from-[var(--primary)] via-[var(--lime)] to-[var(--coral)] md:block" />
@@ -444,7 +444,7 @@ function ClientsSection() {
       <div className="container-pyne">
         <SectionIntro
           eyebrow="Who we help"
-          title="Built for businesses that need cleaner digital experiences."
+          title="Built for businesses that need clearer digital experiences."
           description="Pyne supports startups, education teams, local businesses, clinics, retail brands, hospitality teams, real estate, and service companies with practical digital systems."
         />
       </div>
@@ -479,7 +479,7 @@ function BlogPreview() {
           <SectionIntro
             eyebrow="Notes"
             title="Small reads for better digital decisions."
-            description="Ideas on web experience, automation, AI, and the practical side of building modern products."
+            description="Ideas on web experience, automation, and the practical side of building useful digital products."
             center={false}
           />
           <Button asChild variant="outline">
@@ -512,9 +512,9 @@ function ContactCTA() {
             <Check className="h-4 w-4" />
             Ready when you are
           </span>
-          <h2 className="mt-5 text-4xl font-black leading-tight sm:text-5xl">Bring the idea. We&apos;ll bring the pixels, pipes, and polish.</h2>
+          <h2 className="mt-5 text-4xl font-black leading-tight sm:text-5xl">Bring the idea. We&apos;ll bring the design, code, and launch support.</h2>
           <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
-            Tell us what you want to build. The form opens WhatsApp or an email draft, so there is no backend setup to block the first conversation.
+            Tell us what you want to build. The form opens WhatsApp or an email draft, so the first conversation can start quickly.
           </p>
         </div>
         <div className="rounded-[30px] border border-[rgba(30,34,51,0.1)] bg-white p-6 shadow-[0_24px_70px_rgba(47,75,111,0.12)]">

@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { seoMetadata } from "@/lib/seo";
 import { brand, services } from "@/lib/site-data";
 
 type Props = {
@@ -20,10 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
   if (!service) return {};
-  return {
+  return seoMetadata({
     title: service.title,
-    description: service.description
-  };
+    description: `${service.description} Work with Pyne Technologies for ${service.title.toLowerCase()} that is clear, fast, and ready to launch.`,
+    path: `/services/${service.slug}`,
+    keywords: [service.title, ...service.features],
+    image: service.image
+  });
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
@@ -42,7 +46,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="pop">
                 <Link href="/contact">
-                  Start this service
+                  Start a project
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
@@ -62,7 +66,7 @@ export default async function ServiceDetailPage({ params }: Props) {
         <div className="container-pyne grid gap-8 lg:grid-cols-2">
           <Reveal>
           <Card className="h-full p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(47,75,111,0.14)] sm:p-7">
-            <h2 className="text-3xl font-black">What Pyne builds here</h2>
+            <h2 className="text-3xl font-black">What we build</h2>
             <ul className="mt-6 grid gap-4">
               {service.features.map((feature) => (
                 <li className="flex gap-3 text-base font-bold" key={feature}>
@@ -94,7 +98,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <span className="eyebrow">Project inquiry</span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-4xl">Tell {brand.shortName} what you want to launch.</h2>
             <p className="mt-4 text-lg leading-8 text-[var(--muted)]">
-              The form opens WhatsApp or an email draft with your details already arranged.
+              The form opens WhatsApp or an email draft with your details filled in.
             </p>
           </Reveal>
           <Reveal delay={0.08}>

@@ -45,6 +45,7 @@ export type BlogPost = {
 export type ClientLogo = {
   name: string;
   industry: string;
+  useCase: string;
   icon: LucideIcon;
   accent: string;
 };

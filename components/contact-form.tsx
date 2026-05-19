@@ -9,7 +9,7 @@ import { Input, Label, Textarea } from "@/components/ui/form-fields";
 import { aiSolutions, brand, services } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
-const interests = ["Website", "App", "AI", "Marketing", "WhatsApp", "Design", "Not sure yet"];
+const interests = ["Website", "App", "Automation", "Marketing", "WhatsApp", "Design", "Not sure yet"];
 
 export function ContactForm({ compact = false }: { compact?: boolean }) {
   const [form, setForm] = useState({
@@ -53,18 +53,18 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
   return (
     <form onSubmit={handleSubmit} className="grid gap-4">
       <div className={compact ? "grid gap-4" : "grid gap-4 md:grid-cols-2"}>
-        <Field label="Full Name">
-          <Input required value={form.name} onChange={(event) => update("name", event.target.value)} placeholder="Your Name" />
+        <Field label="Full name">
+          <Input required value={form.name} onChange={(event) => update("name", event.target.value)} placeholder="Your name" />
         </Field>
         <Field label="Email">
-          <Input required type="email" value={form.email} onChange={(event) => update("email", event.target.value)} placeholder="Your Email" />
+          <Input required type="email" value={form.email} onChange={(event) => update("email", event.target.value)} placeholder="Your email" />
         </Field>
       </div>
       <div className={compact ? "grid gap-4" : "grid gap-4 md:grid-cols-2"}>
         <Field label="Phone">
-          <Input value={form.phone} onChange={(event) => update("phone", event.target.value)} placeholder="Your Phone" />
+          <Input value={form.phone} onChange={(event) => update("phone", event.target.value)} placeholder="Your phone" />
         </Field>
-        <Field label="Project Type">
+        <Field label="Project type">
           <PyneDropdown value={form.interest} options={interests} onChange={(value) => update("interest", value)} />
         </Field>
       </div>
@@ -72,12 +72,12 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
         <PyneDropdown value={form.service} options={serviceOptions} onChange={(value) => update("service", value)} />
       </Field>
       <Field label="Message">
-        <Textarea value={form.message} onChange={(event) => update("message", event.target.value)} placeholder="Tell us about your project..." />
+        <Textarea value={form.message} onChange={(event) => update("message", event.target.value)} placeholder="Tell us about your project" />
       </Field>
       <div className="flex flex-col gap-3 sm:flex-row">
         <Button type="submit" variant="pop" className="flex-1">
           <MessageCircle className="h-4 w-4" />
-          Send Message
+          Send message
         </Button>
         <Button asChild variant="outline" className="flex-1">
           <a href={emailHref}>

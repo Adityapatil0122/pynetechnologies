@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Sora } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { ChatLauncher } from "@/components/ai/ChatLauncher";
@@ -7,19 +8,57 @@ import { FloatingQuickNav } from "@/components/floating-quick-nav";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { aiSolutions, brand, services } from "@/lib/site-data";
 import { absoluteUrl } from "@/lib/utils";
 
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sora",
+  display: "swap"
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://pynetechnologies.com"),
+  metadataBase: new URL(brand.url),
+  applicationName: brand.name,
   title: {
-    default: "Pyne Technologies - Web, AI, Apps, Marketing and Design",
+    default: "Pyne Technologies - Web, Apps, Automation, Marketing and Design",
     template: "%s | Pyne Technologies"
   },
   description:
-    "Pyne Technologies builds websites, apps, AI solutions, WhatsApp automation, digital marketing systems, UI/UX, and graphics.",
+    "Pyne Technologies builds websites, apps, WhatsApp automation, digital marketing systems, UI/UX design, and graphic design for growing businesses.",
+  keywords: [
+    "Pyne Technologies",
+    "website development company",
+    "app development company",
+    "automation services",
+    "WhatsApp Business API",
+    "digital marketing",
+    "UI UX design",
+    "graphic design",
+    "Satara",
+    "Maharashtra"
+  ],
+  authors: [{ name: brand.name, url: brand.url }],
+  creator: brand.name,
+  publisher: brand.name,
+  alternates: {
+    canonical: absoluteUrl()
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
+  },
   openGraph: {
     title: "Pyne Technologies",
-    description: "Web, AI, apps, marketing, and brand systems with bright motion and practical delivery.",
+    description: "Websites, apps, automation, marketing, UI/UX design, and graphic design for growing businesses.",
     url: absoluteUrl(),
     siteName: "Pyne Technologies",
     images: [{ url: "/pyne-logo.svg", width: 1200, height: 630, alt: "Pyne Technologies logo" }],
@@ -29,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Pyne Technologies",
-    description: "Fresh digital builds for web, AI, apps, marketing, and design.",
+    description: "Websites, apps, automation, marketing, and design for growing businesses.",
     images: ["/pyne-logo.svg"]
   },
   icons: {
@@ -45,11 +84,56 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "LocalBusiness"],
+    name: brand.name,
+    url: brand.url,
+    logo: absoluteUrl("/pyne-logo.svg"),
+    image: absoluteUrl("/pyne-logo.svg"),
+    email: brand.email,
+    telephone: `+${brand.whatsappNumber}`,
+    description: brand.tagline,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: brand.city,
+      addressRegion: "Maharashtra",
+      addressCountry: "IN"
+    },
+    areaServed: ["India"],
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: `+${brand.whatsappNumber}`,
+        contactType: "customer support",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi", "Marathi"]
+      }
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Pyne Technologies services",
+      itemListElement: [...services, ...aiSolutions].map((item) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: item.title,
+          description: item.description
+        }
+      }))
+    }
+  };
+
   return (
     <html lang="en">
-      <body>
+      <body className={sora.variable}>
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}
+        />
         <SiteHeader />
-        <main>{children}</main>
+        <main className="page-shell">{children}</main>
         <SiteFooter />
         <FloatingQuickNav />
         <FloatingWhatsApp />

@@ -25,7 +25,7 @@ export function CookieBanner() {
     <div className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-4xl rounded-[24px] border border-[rgba(30,34,51,0.12)] bg-white p-4 shadow-[0_24px_70px_rgba(47,75,111,0.18)]">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <p className="text-sm font-semibold leading-6 text-[var(--muted)]">
-          We use simple cookies to keep the site tidy and understand what visitors enjoy. Read the{" "}
+          We use simple cookies to keep the site working and improve our pages. Read the{" "}
           <Link className="font-black text-[var(--primary-strong)]" href="/legal/cookie-policy">
             cookie policy
           </Link>

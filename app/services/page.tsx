@@ -5,12 +5,16 @@ import { Reveal } from "@/components/reveal";
 import { SectionIntro } from "@/components/section-intro";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { seoMetadata } from "@/lib/seo";
 import { services } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "Web Services",
-  description: "Website development, app development, digital marketing, WhatsApp Business API, UI/UX design, and graphics designing from Pyne Technologies."
-};
+export const metadata: Metadata = seoMetadata({
+  title: "Digital Services",
+  description:
+    "Explore website development, app development, digital marketing, WhatsApp Business API, UI/UX design, and graphic design services from Pyne Technologies.",
+  path: "/services",
+  keywords: ["digital services", "website development", "app development", "graphic design"]
+});
 
 export default function ServicesPage() {
   return (
@@ -18,8 +22,9 @@ export default function ServicesPage() {
       <div className="container-pyne">
         <SectionIntro
           eyebrow="Web services"
-          title="Pick the digital engine your next move needs."
-          description="Each service can stand alone, but the real fun starts when strategy, design, code, and campaigns work as one system."
+          title="Choose the digital service your business needs next."
+          description="Start with one service or combine strategy, design, code, automation, and campaigns into one clear plan."
+          headingLevel="h1"
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (

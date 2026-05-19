@@ -6,6 +6,7 @@ import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { seoMetadata } from "@/lib/seo";
 import { aiSolutions } from "@/lib/site-data";
 
 type Props = {
@@ -20,10 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const solution = aiSolutions.find((item) => item.slug === slug);
   if (!solution) return {};
-  return {
+  return seoMetadata({
     title: solution.title,
-    description: solution.description
-  };
+    description: `${solution.description} Pyne Technologies builds practical automation for lead handling, support, reporting, and internal tools.`,
+    path: `/automation/${solution.slug}`,
+    keywords: [solution.title, ...solution.features],
+    noIndex: true
+  });
 }
 
 export default async function AISolutionDetailPage({ params }: Props) {
@@ -36,12 +40,12 @@ export default async function AISolutionDetailPage({ params }: Props) {
       <section className="section-y bg-[#f2ffd0]">
         <div className="container-pyne grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
-            <span className="eyebrow">AI solution</span>
+            <span className="eyebrow">Automation</span>
             <h1 className="mt-6 text-4xl font-black leading-tight sm:text-6xl">{solution.title}</h1>
             <p className="mt-5 text-lg leading-8 text-[var(--muted)]">{solution.description}</p>
             <Button asChild className="mt-8" variant="pop">
               <Link href="/contact">
-                Discuss AI use case
+                Discuss your workflow
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -49,7 +53,7 @@ export default async function AISolutionDetailPage({ params }: Props) {
           <Reveal delay={0.08}>
           <Card className="p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(47,75,111,0.14)] sm:p-7">
             <solution.icon className="h-14 w-14 text-[var(--primary-strong)]" />
-            <h2 className="mt-6 text-3xl font-black">Capability mix</h2>
+            <h2 className="mt-6 text-3xl font-black">What this includes</h2>
             <ul className="mt-6 grid gap-4">
               {solution.features.map((feature) => (
                 <li className="flex gap-3 text-base font-bold" key={feature}>
@@ -66,9 +70,9 @@ export default async function AISolutionDetailPage({ params }: Props) {
         <div className="container-pyne grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
             <span className="eyebrow">Make it practical</span>
-            <h2 className="mt-5 text-3xl font-black leading-tight sm:text-4xl">Start with the workflow, then choose the model.</h2>
+            <h2 className="mt-5 text-3xl font-black leading-tight sm:text-4xl">Start with the workflow, then choose the right tool.</h2>
             <p className="mt-4 text-lg leading-8 text-[var(--muted)]">
-              Share the task you want to speed up. Pyne can shape the flow, data boundary, dashboard, and handoff.
+              Share the task you want to speed up. Pyne can shape the flow, data setup, dashboard, and handoff.
             </p>
           </Reveal>
           <Reveal delay={0.08}>

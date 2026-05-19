@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, BriefcaseBusiness, Mail, MapPin, Share2 } from "lucide-react";
+import { ArrowUpRight, BriefcaseBusiness, Mail, MapPin } from "lucide-react";
 import { SiteLogo } from "@/components/site-logo";
 import { Button } from "@/components/ui/button";
 import { brand, navGroups } from "@/lib/site-data";
@@ -69,12 +69,10 @@ export function SiteFooter() {
               <MapPin className="h-4 w-4 text-[var(--primary-strong)]" />
               {brand.city}
             </span>
-            <a className="transition hover:text-[var(--primary-strong)]" href="#" aria-label="Pyne Technologies social profile">
-              <Share2 className="h-5 w-5" />
-            </a>
-            <a className="transition hover:text-[var(--primary-strong)]" href="#" aria-label="Pyne Technologies business profile">
-              <BriefcaseBusiness className="h-5 w-5" />
-            </a>
+            <span className="inline-flex items-center gap-2">
+              <BriefcaseBusiness className="h-4 w-4 text-[var(--primary-strong)]" />
+              Projects across India
+            </span>
           </div>
         </div>
       </div>

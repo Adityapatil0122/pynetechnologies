@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
+import { seoMetadata } from "@/lib/seo";
 import { legalPages } from "@/lib/site-data";
 
 type Props = {
@@ -15,10 +16,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const page = legalPages.find((item) => item.slug === slug);
   if (!page) return {};
-  return {
+  return seoMetadata({
     title: page.title,
-    description: `${page.title} for Pyne Technologies.`
-  };
+    description: `${page.title} for Pyne Technologies.`,
+    path: `/legal/${page.slug}`,
+    keywords: [page.title, "Pyne Technologies legal"]
+  });
 }
 
 export default async function LegalPage({ params }: Props) {

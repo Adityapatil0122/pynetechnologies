@@ -5,21 +5,27 @@ import { Reveal } from "@/components/reveal";
 import { SectionIntro } from "@/components/section-intro";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { seoMetadata } from "@/lib/seo";
 import { aiSolutions } from "@/lib/site-data";
 
-export const metadata: Metadata = {
-  title: "AI Solutions",
-  description: "AI chatbots, custom AI solutions, API integrations, and data analytics from Pyne Technologies."
-};
+export const metadata: Metadata = seoMetadata({
+  title: "Automation Services",
+  description:
+    "Pyne Technologies builds chatbots, workflow automation, API integrations, and analytics dashboards for business teams.",
+  path: "/automation",
+  keywords: ["automation services", "chatbots", "API integrations", "analytics dashboards"],
+  noIndex: true
+});
 
 export default function AIPage() {
   return (
     <section className="section-y bg-[#f2ffd0]">
       <div className="container-pyne">
         <SectionIntro
-          eyebrow="AI solutions"
-          title="Automation with manners, dashboards with brains."
-          description="Pyne plans AI around actual work: support, lead handling, reporting, operations, and internal tools."
+          eyebrow="Automation"
+          title="Automation that supports everyday business work."
+          description="Pyne plans systems around real tasks like support, lead handling, reporting, operations, and internal tools."
+          headingLevel="h1"
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {aiSolutions.map((solution, index) => (
@@ -37,7 +43,7 @@ export default function AIPage() {
                 ))}
               </ul>
               <Button asChild className="mt-6" variant="outline">
-                <Link href={`/ai/${solution.slug}`}>
+                <Link href={`/automation/${solution.slug}`}>
                   Explore
                   <ArrowRight className="h-4 w-4" />
                 </Link>

@@ -9,7 +9,7 @@ import { pyneAiSuggestions, type PyneAiMessage } from "@/lib/pyne-ai";
 
 const greeting: PyneAiMessage = {
   role: "assistant",
-  content: "Hi, I'm Pyne AI. Ask me about services, AI solutions, products, process, pricing, or how to start a project."
+  content: "Hi, I'm Pyne Guide. Ask me about services, automation, products, pricing, or how to start a project."
 };
 
 export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
@@ -61,7 +61,7 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
         ...current,
         {
           role: "assistant",
-          content: data.reply || "I could not read that clearly. Ask me about Pyne services, AI solutions, apps, websites, or contact details."
+          content: data.reply || "I did not understand that. Ask me about Pyne services, automation, apps, websites, or contact details."
         }
       ]);
     } catch {
@@ -69,7 +69,7 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
         ...current,
         {
           role: "assistant",
-          content: "I'm having trouble connecting right now, but Pyne can help with websites, apps, AI, WhatsApp automation, design, and marketing."
+          content: "I'm having trouble connecting right now, but Pyne can help with websites, apps, WhatsApp automation, design, and marketing."
         }
       ]);
     } finally {
@@ -105,7 +105,7 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
             className="fixed inset-x-3 bottom-44 z-50 flex max-h-[min(720px,calc(100dvh-200px))] flex-col overflow-hidden rounded-[30px] border border-white bg-white shadow-[0_30px_90px_rgba(30,34,51,0.24)] sm:left-auto sm:right-6 sm:w-[430px]"
-            aria-label="Pyne AI chat panel"
+            aria-label="Pyne Guide chat panel"
           >
             <div className="flex items-center justify-between gap-4 border-b border-[rgba(30,34,51,0.08)] bg-[#f5fbff] p-5">
               <div className="flex min-w-0 items-center gap-3">
@@ -114,15 +114,15 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
                   <span className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-[var(--mint)]" />
                 </span>
                 <div className="min-w-0">
-                  <h2 className="truncate text-lg font-black">Pyne AI</h2>
-                  <p className="truncate text-sm font-bold text-[var(--muted)]">Powered by Pyne &middot; replies instantly</p>
+                  <h2 className="truncate text-lg font-black">Pyne Guide</h2>
+                  <p className="truncate text-sm font-bold text-[var(--muted)]">Pyne support guide &middot; quick replies</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <button className="focus-ring rounded-full p-2 transition hover:bg-white" type="button" onClick={resetChat} aria-label="Reset Pyne AI chat">
+                <button className="focus-ring rounded-full p-2 transition hover:bg-white" type="button" onClick={resetChat} aria-label="Reset Pyne Guide chat">
                   <RotateCcw className="h-5 w-5" />
                 </button>
-                <button className="focus-ring rounded-full p-2 transition hover:bg-white" type="button" onClick={onClose} aria-label="Close Pyne AI">
+                <button className="focus-ring rounded-full p-2 transition hover:bg-white" type="button" onClick={onClose} aria-label="Close Pyne Guide">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -135,7 +135,7 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
               {loading ? (
                 <div className="flex items-center gap-3 text-sm font-black text-[var(--muted)]">
                   <Loader2 className="h-4 w-4 animate-spin text-[var(--primary-strong)]" />
-                  Pyne AI is thinking
+                  Pyne Guide is thinking
                 </div>
               ) : null}
             </div>
@@ -154,20 +154,20 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
                     }
                   }}
                   rows={1}
-                  placeholder="Ask Pyne AI..."
+                  placeholder="Ask Pyne Guide"
                   className="focus-ring max-h-32 min-h-12 flex-1 resize-none rounded-2xl border border-[rgba(30,34,51,0.14)] bg-white px-4 py-3 text-sm font-semibold leading-6 placeholder:text-[#8a91a5]"
                 />
                 <button
                   type="submit"
                   disabled={loading || !input.trim()}
                   className="focus-ring flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-white shadow-[0_14px_30px_rgba(0,184,255,0.25)] transition hover:-translate-y-0.5 hover:bg-[var(--primary-strong)] disabled:pointer-events-none disabled:opacity-50"
-                  aria-label="Send message to Pyne AI"
+                  aria-label="Send message to Pyne Guide"
                 >
                   <ArrowUp className="h-5 w-5" />
                 </button>
               </form>
               <p className="text-center text-[11px] font-semibold leading-4 text-[var(--muted)]">
-                Pyne AI can be wrong. For binding answers, use the contact form.
+                Please confirm important project details with the Pyne team.
               </p>
             </div>
           </motion.aside>

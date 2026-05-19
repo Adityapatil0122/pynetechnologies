@@ -12,7 +12,7 @@ const fallbackContext = `
 Pyne Technologies is a digital product studio based in ${brand.city}.
 Services:
 ${serviceSummary}
-AI solutions:
+Automation:
 ${aiSummary}
 Product:
 Study Room Management App for study halls and Abhyasika operators.
@@ -24,7 +24,7 @@ Business hours: Monday - Saturday, 10:00 AM - 6:00 PM.
 
 export const pyneAiSuggestions = [
   "What services do you offer?",
-  "Which AI solutions do you build?",
+  "What automation services do you build?",
   "How can I contact the Pyne team?",
   "Can you build a website for my business?"
 ];
@@ -37,11 +37,11 @@ export function getFallbackPyneAiReply(input: string) {
   }
 
   if (question.includes("ai") || question.includes("chatbot") || question.includes("automation") || question.includes("analytics")) {
-    return `Pyne builds AI chatbots, custom AI solutions, API integrations, and analytics dashboards. The focus is practical automation: lead handling, support flows, reporting, workflow cleanup, and internal tools.`;
+    return `Pyne builds chatbots, workflow automation, API integrations, and analytics dashboards. The focus is practical delivery: lead handling, support flows, reporting, workflow cleanup, and internal tools.`;
   }
 
   if (question.includes("website") || question.includes("web") || question.includes("app") || question.includes("design") || question.includes("marketing") || question.includes("service")) {
-    return `Pyne offers website development, app development, digital marketing, WhatsApp Business API setup, UI/UX design, and graphics designing. You can start with one service or combine them into a complete digital system.`;
+    return `Pyne offers website development, app development, digital marketing, WhatsApp Business API setup, UI/UX design, and graphic design. You can start with one service or combine them into a complete digital system.`;
   }
 
   if (question.includes("price") || question.includes("pricing") || question.includes("cost") || question.includes("budget")) {
@@ -52,11 +52,11 @@ export function getFallbackPyneAiReply(input: string) {
     return `Pyne is also shaping a Study Room Management App for study halls and Abhyasika teams, with seat planning, renewals, reminders, student records, and secure admin access.`;
   }
 
-  return `I can help with Pyne services, AI solutions, websites, apps, design, marketing, WhatsApp automation, the Study Room app, or contact details. Ask me what you want to build, and I'll keep it short and useful.`;
+  return `I can help with Pyne services, automation, websites, apps, design, marketing, WhatsApp flows, the Study Room app, or contact details. Ask me what you want to build, and I will keep it short and useful.`;
 }
 
 export function buildPyneAiSystemPrompt() {
-  return `You are Pyne AI, the website assistant for Pyne Technologies.
+  return `You are Pyne Guide, the website assistant for Pyne Technologies.
 Answer in a short, helpful, friendly way.
 Do not invent prices, timelines, or private details.
 If the user asks for a quote, ask them to share requirements through the contact form or WhatsApp.

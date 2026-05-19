@@ -1,27 +1,31 @@
 import type { Metadata } from "next";
-import { Clock3, Mail, MapPin, MessageCircle, PhoneCall, Send, Sparkles } from "lucide-react";
+import { Clock3, Mail, MapPin, PhoneCall, Send, Sparkles } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { Card } from "@/components/ui/card";
+import { seoMetadata } from "@/lib/seo";
 import { brand } from "@/lib/site-data";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMetadata({
   title: "Contact",
-  description: "Contact Pyne Technologies for web, app, AI, WhatsApp, marketing, UI/UX, and graphics projects."
-};
+  description:
+    "Contact Pyne Technologies for website development, app development, WhatsApp automation, marketing, UI/UX design, graphic design, and automation projects.",
+  path: "/contact",
+  keywords: ["contact Pyne Technologies", "web development inquiry", "app development inquiry"]
+});
 
 export default function ContactPage() {
   const contactDetails = [
     {
-      title: "Call Us",
+      title: "Call us",
       value: brand.whatsappLabel,
-      detail: "Fast project chats and quick clarifications.",
+      detail: "For quick project chats and simple questions.",
       href: `tel:+${brand.whatsappNumber}`,
       icon: PhoneCall,
       accent: "var(--lime)"
     },
     {
-      title: "Email Us",
+      title: "Email us",
       value: brand.email,
       detail: "For proposals, files, and project notes.",
       href: `mailto:${brand.email}`,
@@ -29,14 +33,14 @@ export default function ContactPage() {
       accent: "var(--primary)"
     },
     {
-      title: "Business Hours",
+      title: "Business hours",
       value: "Monday - Saturday",
       detail: "10:00 AM - 6:00 PM",
       icon: Clock3,
       accent: "var(--sun)"
     },
     {
-      title: "Our Location",
+      title: "Location",
       value: brand.city,
       detail: "",
       icon: MapPin,
@@ -55,10 +59,10 @@ export default function ContactPage() {
             Contact
           </span>
           <h1 className="mt-6 text-4xl font-black leading-tight text-[var(--foreground)] sm:text-6xl">
-            Let&apos;s shape the next thing you want to launch.
+            Let&apos;s plan the next thing you want to launch.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-            Send the brief, a half-formed idea, or the exact screen you need. We&apos;ll turn it into a clear next step.
+            Send a brief, an early idea, or the exact screen you need. We&apos;ll turn it into a clear next step.
           </p>
         </Reveal>
 
@@ -69,7 +73,7 @@ export default function ContactPage() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <p className="text-sm font-black uppercase text-[var(--primary-strong)]">Message</p>
-                <h2 className="mt-2 text-3xl font-black">Send Us a Message</h2>
+                <h2 className="mt-2 text-3xl font-black">Send us a message</h2>
               </div>
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--lime)] shadow-[0_14px_34px_rgba(123,194,0,0.18)]">
                 <Send className="h-6 w-6 text-[var(--foreground)]" />
@@ -86,7 +90,7 @@ export default function ContactPage() {
             <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[var(--sun)] via-[var(--primary)] to-[var(--mint)]" />
             <div className="relative">
               <p className="text-sm font-black uppercase text-[var(--primary-strong)]">Details</p>
-              <h2 className="mt-2 text-3xl font-black">Get in Touch</h2>
+              <h2 className="mt-2 text-3xl font-black">Get in touch</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
                 Direct lines for calls, emails, working hours, and location.
               </p>
@@ -121,18 +125,6 @@ export default function ContactPage() {
                     </div>
                   );
                 })}
-              </div>
-
-              <div className="mt-8 rounded-[26px] bg-[var(--foreground)] p-5 text-white">
-                <div className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/12">
-                    <MessageCircle className="h-5 w-5 text-[var(--lime)]" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-black text-[var(--lime)]">Quick reply window</p>
-                    <p className="mt-1 text-sm leading-5 text-white/78">Most project messages get a same-day response during business hours.</p>
-                  </div>
-                </div>
               </div>
             </div>
           </Card>

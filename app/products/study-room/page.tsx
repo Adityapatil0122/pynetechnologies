@@ -6,16 +6,20 @@ import { Reveal } from "@/components/reveal";
 import { SectionIntro } from "@/components/section-intro";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { seoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMetadata({
   title: "Study Room Management App",
-  description: "Coming soon: a lively study room and Abhyasika management app by Pyne Technologies."
-};
+  description:
+    "Coming soon from Pyne Technologies: a study room and Abhyasika management app for seats, fees, renewals, student records, and reminders.",
+  path: "/products/study-room",
+  keywords: ["study room management app", "Abhyasika management", "study hall software"]
+});
 
 const features = [
-  { title: "Seat planning", description: "Track seats, slots, and occupancy without spreadsheet gymnastics.", icon: Users },
-  { title: "Admissions and renewals", description: "Keep student records, fees, renewals, and reminders in one tidy flow.", icon: CalendarCheck },
-  { title: "Smart notifications", description: "Send updates and payment reminders through friendly automated channels.", icon: Bell },
+  { title: "Seat planning", description: "Track seats, slots, and occupancy without manual spreadsheets.", icon: Users },
+  { title: "Admissions and renewals", description: "Keep student records, fees, renewals, and reminders in one clear flow.", icon: CalendarCheck },
+  { title: "Smart notifications", description: "Send updates and payment reminders through simple automated channels.", icon: Bell },
   { title: "Secure admin", description: "Role-based access for owners, managers, and desk teams.", icon: LockKeyhole }
 ];
 
@@ -32,7 +36,7 @@ export default function StudyRoomPage() {
             <h1 className="mt-6 text-4xl font-black leading-tight sm:text-6xl">Study Room Management App</h1>
             <p className="mt-5 text-lg leading-8 text-[var(--muted)]">
               A dashboard for Abhyasika and study halls that want seat tracking, fee visibility, student records, and
-              reminders without the daily admin circus.
+              reminders without daily admin stress.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="pop">
@@ -63,8 +67,8 @@ export default function StudyRoomPage() {
         <div className="container-pyne">
           <SectionIntro
             eyebrow="Product modules"
-            title="A study hall cockpit that feels calm, not clinical."
-            description="The v1 product direction focuses on the daily tasks owners and staff repeat most often."
+            title="Clear modules for study hall teams."
+            description="The first version focuses on the daily tasks owners and staff repeat most often."
           />
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, index) => (
