@@ -4,10 +4,13 @@ export type NavItem = {
   title: string;
   description?: string;
   href: string;
+  icon?: LucideIcon;
+  accent?: string;
 };
 
 export type NavGroup = {
   title: string;
+  href: string;
   items: NavItem[];
 };
 
@@ -31,23 +34,40 @@ export type AISolution = {
   features: string[];
 };
 
+export type Product = {
+  slug: string;
+  title: string;
+  label: string;
+  description: string;
+  icon: LucideIcon;
+  accent: string;
+  image: string;
+  liveUrl?: string;
+  href?: string;
+  features: string[];
+};
+
 export type BlogPost = {
   slug: string;
   title: string;
   category: string;
+  author?: string;
   date: string;
   readTime: string;
   excerpt: string;
   image: string;
+  tags?: string[];
   content: string[];
 };
 
 export type ClientLogo = {
   name: string;
-  industry: string;
-  useCase: string;
-  icon: LucideIcon;
+  logo: string;
+  industry?: string;
+  useCase?: string;
+  mark?: "gromax" | "insurance-majha" | "socializer" | "spyra-exim" | "technomania" | "rightspot" | "ai-vendor" | "tested-ok";
   accent: string;
+  className?: string;
 };
 
 export type StatItem = {

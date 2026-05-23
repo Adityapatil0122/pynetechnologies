@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Check, Cpu, Gauge, MousePointerClick, Radio, Smartphone, Sparkles, Zap } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Check, Cpu, ExternalLink, Gauge, MousePointerClick, Radio, Smartphone, Sparkles, Zap } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState, type CSSProperties } from "react";
 import { AnimatedCounter } from "@/components/animated-counter";
@@ -9,7 +10,7 @@ import { ContactForm } from "@/components/contact-form";
 import { SectionIntro } from "@/components/section-intro";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { aiSolutions, blogPosts, clients, heroHighlights, processSteps, services, stats } from "@/lib/site-data";
+import { aiSolutions, blogPosts, clients, heroHighlights, processSteps, products, services, stats } from "@/lib/site-data";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 26 },
@@ -62,6 +63,7 @@ export function HomePage() {
       <StatsStrip />
       <ServicesSection />
       <AISection />
+      <ProductsSection />
       <ProcessSection />
       <ClientsSection />
       <BlogPreview />
@@ -345,19 +347,25 @@ function ServicesSection() {
               transition={{ duration: 0.5, delay: index * 0.05 }}
               whileHover={{ y: -8, rotate: index % 2 ? -0.7 : 0.7 }}
             >
-              <Link href={`/services/${service.slug}`} className="block h-full">
-                <Card className="h-full overflow-hidden p-0">
-                  <div className="h-44 overflow-hidden">
-                    <img src={service.image} alt="" className="h-full w-full object-cover transition duration-700 hover:scale-105" />
+              <Link href={`/services/${service.slug}`} className="group block h-full">
+                <Card className="relative h-[430px] overflow-hidden p-0">
+                  <img src={service.image} alt="" className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-visible:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,20,32,0.92)] via-[rgba(10,20,32,0.42)] to-[rgba(10,20,32,0.04)] transition duration-500 group-hover:from-[rgba(10,20,32,0.96)] group-hover:via-[rgba(10,20,32,0.68)]" />
+                  <div className="absolute left-6 right-6 top-6 flex items-center justify-between">
+                    <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/92 shadow-sm backdrop-blur" style={{ color: service.accent }}>
+                      <service.icon className="h-7 w-7" />
+                    </span>
+                    <span className="rounded-full bg-white/92 px-3 py-2 text-xs font-black text-[var(--foreground)] backdrop-blur">
+                      0{index + 1}
+                    </span>
                   </div>
-                  <div className="p-6">
-                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl" style={{ background: service.accent }}>
-                      <service.icon className="h-6 w-6 text-[var(--foreground)]" />
+                  <div className="absolute inset-x-0 bottom-0 p-7 text-white transition duration-500 ease-out group-hover:-translate-y-6 group-focus-visible:-translate-y-6">
+                    <p className="mini-heading" style={{ "--mini-heading-color": "rgba(255,255,255,0.78)" } as CSSProperties}>{service.kicker}</p>
+                    <h3 className="mt-3 text-3xl font-black leading-tight">{service.title}</h3>
+                    <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-out group-hover:mt-4 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:mt-4 group-focus-visible:max-h-40 group-focus-visible:opacity-100">
+                      <p className="text-base font-semibold leading-7 text-white/82">{service.description}</p>
                     </div>
-                    <p className="text-sm font-black text-[var(--primary-strong)]">{service.kicker}</p>
-                    <h3 className="mt-2 text-2xl font-black">{service.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{service.description}</p>
-                    <div className="mt-5 flex items-center gap-2 text-sm font-black text-[var(--foreground)]">
+                    <div className="mt-5 flex translate-y-3 items-center gap-2 text-sm font-black opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
                       See details
                       <ArrowRight className="h-4 w-4" />
                     </div>
@@ -404,6 +412,85 @@ function AISection() {
   );
 }
 
+function ProductsSection() {
+  return (
+    <section className="section-y bg-[#fff8ea]">
+      <div className="container-pyne">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <SectionIntro
+            eyebrow="Products"
+            title="Live products built for real business work."
+            description="Explore LMS, public websites, WhatsApp tools, insurance content, print ecommerce, and study hall software from the Pyne product shelf."
+            center={false}
+          />
+          <Button asChild variant="outline">
+            <Link href="/products">
+              View all products
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {products.map((product, index) => {
+            const Icon = product.icon;
+            const productHref = product.href ?? product.liveUrl ?? "/products";
+            const isExternal = Boolean(product.liveUrl && !product.href);
+
+            return (
+              <motion.article
+                key={product.slug}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.22 }}
+                variants={fadeUp}
+                transition={{ duration: 0.45, delay: index * 0.04 }}
+                className="group overflow-hidden rounded-[28px] border border-[rgba(30,34,51,0.08)] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(47,75,111,0.14)]"
+              >
+                <div className="relative h-48 overflow-hidden bg-[#e9fbff]">
+                  <Image
+                    src={product.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(30,34,51,0.48)] to-transparent" />
+                  <div className="absolute left-5 top-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-sm">
+                    <Icon className="h-7 w-7" style={{ color: product.accent }} />
+                  </div>
+                  <span className="absolute bottom-5 left-5 rounded-full bg-white px-4 py-2 text-xs font-black text-[var(--foreground)]">
+                    {product.label}
+                  </span>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-black">{product.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{product.description}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {product.features.slice(0, 3).map((feature) => (
+                      <span key={feature} className="rounded-full bg-[#f5fbff] px-3 py-1 text-xs font-black text-[var(--foreground)]">
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href={productHref}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noreferrer" : undefined}
+                    className="focus-ring mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-5 py-3 text-sm font-black text-white shadow-[0_16px_34px_rgba(0,184,255,0.22)] transition hover:bg-[var(--primary-strong)]"
+                  >
+                    {isExternal ? "Open live product" : "View product"}
+                    {isExternal ? <ExternalLink className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
+                  </Link>
+                </div>
+              </motion.article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ProcessSection() {
   return (
     <section className="section-y">
@@ -427,7 +514,7 @@ function ProcessSection() {
               <div className="relative z-10 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[var(--sun)] text-xl font-black">
                 <step.icon className="h-6 w-6" />
               </div>
-              <p className="mt-5 text-sm font-black text-[var(--primary-strong)]">0{index + 1}</p>
+              <p className="mini-heading mt-5">0{index + 1}</p>
               <h3 className="mt-2 text-xl font-black">{step.title}</h3>
               <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{step.description}</p>
             </motion.div>
@@ -448,21 +535,21 @@ function ClientsSection() {
           description="Pyne supports startups, education teams, local businesses, clinics, retail brands, hospitality teams, real estate, and service companies with practical digital systems."
         />
       </div>
-      <div className="mt-12 flex overflow-hidden">
+      <div className="client-logo-strip mt-14 flex overflow-hidden py-5">
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-          className="flex min-w-max gap-4 px-4"
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex min-w-max gap-8 px-4"
         >
           {[...clients, ...clients].map((client, index) => (
-            <div key={`${client.name}-${index}`} className="flex w-64 items-center gap-4 rounded-[24px] border border-[rgba(30,34,51,0.08)] bg-white p-4 shadow-sm sm:w-72 sm:p-5">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl" style={{ background: client.accent }}>
-                <client.icon className="h-7 w-7 text-[var(--foreground)]" />
-              </div>
-              <div className="min-w-0">
-                <p className="truncate text-xl font-black">{client.name}</p>
-                <p className="mt-1 text-sm font-bold text-[var(--muted)]">{client.industry}</p>
-              </div>
+            <div key={`${client.name}-${index}`} className="flex h-[132px] w-[360px] items-center justify-center rounded-[28px] border border-[rgba(30,34,51,0.08)] bg-white px-8 py-6 shadow-sm sm:w-[460px]">
+              <Image
+                src={client.logo}
+                alt={`${client.name} logo`}
+                width={260}
+                height={110}
+                className={`${client.className ?? "max-h-20"} h-auto w-auto max-w-[78%] object-contain`}
+              />
             </div>
           ))}
         </motion.div>
@@ -487,11 +574,15 @@ function BlogPreview() {
           </Button>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {blogPosts.map((post) => (
+          {blogPosts.slice(0, 3).map((post) => (
             <Link key={post.slug} href={`/blogs/${post.slug}`} className="group block overflow-hidden rounded-[24px] border border-[rgba(30,34,51,0.1)] bg-white shadow-[0_18px_44px_rgba(47,75,111,0.08)]">
-              <img src={post.image} alt="" className="h-44 w-full object-cover transition duration-700 group-hover:scale-105" />
+              <div className="relative h-44 overflow-hidden bg-[#075eb8]">
+                <img src={post.image} alt="" className="h-full w-full object-cover opacity-[0.58] mix-blend-luminosity transition duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(2,42,112,0.48),rgba(0,184,255,0.34))]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(2,17,54,0.66)] via-transparent to-transparent" />
+              </div>
               <div className="p-6">
-                <p className="text-xs font-black uppercase text-[var(--primary-strong)]">{post.category}</p>
+                <p className="mini-heading">{post.category}</p>
                 <h3 className="mt-3 text-xl font-black leading-tight">{post.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{post.excerpt}</p>
               </div>

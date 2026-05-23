@@ -72,7 +72,7 @@ export default function ContactPage() {
             <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[var(--primary)] via-[var(--lime)] to-[var(--coral)]" />
             <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <p className="text-sm font-black uppercase text-[var(--primary-strong)]">Message</p>
+                <p className="mini-heading">Message</p>
                 <h2 className="mt-2 text-3xl font-black">Send us a message</h2>
               </div>
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--lime)] shadow-[0_14px_34px_rgba(123,194,0,0.18)]">
@@ -89,7 +89,7 @@ export default function ContactPage() {
           <Card className="relative overflow-hidden rounded-[30px] bg-white p-6 shadow-[0_28px_90px_rgba(47,75,111,0.13)] sm:p-8">
             <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[var(--sun)] via-[var(--primary)] to-[var(--mint)]" />
             <div className="relative">
-              <p className="text-sm font-black uppercase text-[var(--primary-strong)]">Details</p>
+              <p className="mini-heading">Details</p>
               <h2 className="mt-2 text-3xl font-black">Get in touch</h2>
               <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
                 Direct lines for calls, emails, working hours, and location.

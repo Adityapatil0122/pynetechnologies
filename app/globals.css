@@ -83,16 +83,41 @@ button {
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0;
   max-width: 100%;
-  border: 1px solid rgba(30, 34, 51, 0.1);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.76);
-  padding: 8px 14px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
   color: var(--primary-strong);
-  font-size: 0.84rem;
-  font-weight: 800;
-  box-shadow: 0 10px 30px rgba(0, 135, 216, 0.08);
+  font-size: clamp(1.05rem, 1.35vw, 1.7rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+
+.eyebrow svg {
+  display: none;
+}
+
+.mini-heading {
+  color: var(--mini-heading-color, var(--primary-strong));
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.client-logo-strip img,
+.client-logo-strip svg,
+.logo-strip img,
+.brand-strip img,
+.clients-logo-strip img {
+  max-height: 96px;
+  width: auto;
 }
 
 .tap-clean {
@@ -126,6 +151,269 @@ button {
 
 .page-shell {
   animation: page-fade-in 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.tech-wire-bg::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  z-index: 0;
+  opacity: 0.45;
+  background-image:
+    linear-gradient(90deg, rgba(0, 135, 216, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(0, 135, 216, 0.07) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+.tech-wire-bg::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  z-index: 0;
+  background:
+    radial-gradient(circle at 18% 40%, rgba(255, 255, 255, 0.4), transparent 19rem),
+    radial-gradient(circle at 78% 52%, rgba(255, 255, 255, 0.22), transparent 23rem),
+    linear-gradient(90deg, rgba(233, 251, 255, 0.62), rgba(233, 251, 255, 0.42) 48%, rgba(233, 251, 255, 0.56));
+}
+
+.tech-desk-item {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  border: 3px solid rgba(0, 135, 216, 0.26);
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 18px 46px rgba(0, 135, 216, 0.1);
+}
+
+.tech-monitor {
+  left: 7%;
+  top: 14%;
+  width: 188px;
+  height: 116px;
+  border-radius: 22px;
+}
+
+.tech-monitor::before {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  top: 22px;
+  height: 3px;
+  content: "";
+  background: rgba(0, 135, 216, 0.18);
+  box-shadow: 0 22px 0 rgba(0, 135, 216, 0.14), 0 44px 0 rgba(0, 135, 216, 0.1);
+}
+
+.tech-monitor::after {
+  position: absolute;
+  left: 50%;
+  bottom: -38px;
+  width: 72px;
+  height: 36px;
+  content: "";
+  border-bottom: 2px solid rgba(0, 135, 216, 0.22);
+  border-left: 2px solid rgba(0, 135, 216, 0.22);
+  border-right: 2px solid rgba(0, 135, 216, 0.22);
+  transform: translateX(-50%);
+}
+
+.tech-phone {
+  left: 45%;
+  top: 11%;
+  width: 66px;
+  height: 116px;
+  border-radius: 22px;
+  transform: rotate(-10deg);
+}
+
+.tech-phone::before {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  width: 10px;
+  height: 10px;
+  content: "";
+  border-radius: 999px;
+  background: rgba(0, 135, 216, 0.22);
+  transform: translateX(-50%);
+}
+
+.tech-keyboard {
+  left: 12%;
+  bottom: 9%;
+  width: 280px;
+  height: 72px;
+  border-radius: 22px;
+  background-image:
+    linear-gradient(rgba(0, 135, 216, 0.18) 0 0),
+    linear-gradient(rgba(0, 135, 216, 0.14) 0 0);
+  background-position: 22px 20px, 22px 42px;
+  background-size: 220px 3px, 180px 3px;
+  background-repeat: no-repeat;
+}
+
+.tech-keyboard::before {
+  position: absolute;
+  inset: 14px;
+  content: "";
+  background-image: radial-gradient(circle, rgba(0, 135, 216, 0.22) 2px, transparent 3px);
+  background-size: 22px 18px;
+}
+
+.tech-mouse {
+  right: 17%;
+  top: 18%;
+  width: 76px;
+  height: 112px;
+  border-radius: 34px;
+  transform: rotate(12deg);
+}
+
+.tech-mouse::before {
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  width: 2px;
+  height: 24px;
+  content: "";
+  background: rgba(0, 135, 216, 0.24);
+  transform: translateX(-50%);
+}
+
+.tech-cpu {
+  right: 5%;
+  bottom: 12%;
+  width: 98px;
+  height: 158px;
+  border-radius: 24px;
+}
+
+.tech-cpu::before {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 22px;
+  height: 2px;
+  content: "";
+  background: rgba(0, 135, 216, 0.18);
+  box-shadow: 0 18px 0 rgba(0, 135, 216, 0.16), 0 36px 0 rgba(0, 135, 216, 0.12);
+}
+
+.tech-cpu::after {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  width: 14px;
+  height: 14px;
+  content: "";
+  border-radius: 999px;
+  background: rgba(184, 255, 44, 0.65);
+}
+
+.tech-printer {
+  right: 30%;
+  bottom: 8%;
+  width: 160px;
+  height: 92px;
+  border-radius: 24px;
+}
+
+.tech-printer::before {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  top: -28px;
+  height: 34px;
+  content: "";
+  border: 2px solid rgba(0, 135, 216, 0.2);
+  border-radius: 12px 12px 4px 4px;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.tech-printer::after {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: -18px;
+  height: 32px;
+  content: "";
+  border: 2px solid rgba(0, 135, 216, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.tech-files {
+  right: 39%;
+  top: 12%;
+  width: 110px;
+  height: 128px;
+  border-radius: 16px;
+  transform: rotate(8deg);
+}
+
+.tech-cable {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(0, 135, 216, 0.18);
+}
+
+.tech-cable::after {
+  position: absolute;
+  right: -7px;
+  top: -5px;
+  width: 13px;
+  height: 13px;
+  content: "";
+  border: 3px solid rgba(0, 135, 216, 0.18);
+  border-radius: 999px;
+  background: rgba(233, 251, 255, 0.65);
+}
+
+.tech-cable-one {
+  left: 18%;
+  top: 34%;
+  width: 210px;
+}
+
+.tech-cable-two {
+  right: 13%;
+  top: 40%;
+  width: 190px;
+  transform: rotate(-8deg);
+}
+
+.tech-cable-three {
+  left: 46%;
+  bottom: 24%;
+  width: 240px;
+  transform: rotate(5deg);
+}
+
+.tech-files::before,
+.tech-files::after {
+  position: absolute;
+  content: "";
+  border: 2px solid rgba(0, 135, 216, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.tech-files::before {
+  inset: 12px -14px -12px 14px;
+}
+
+.tech-files::after {
+  left: 16px;
+  right: 18px;
+  top: 28px;
+  height: 2px;
+  background: rgba(0, 135, 216, 0.14);
+  box-shadow: 0 16px 0 rgba(0, 135, 216, 0.12), 0 32px 0 rgba(0, 135, 216, 0.1);
 }
 
 .focus-ring {

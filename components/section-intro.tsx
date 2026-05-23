@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function SectionIntro({
   eyebrow,
@@ -17,12 +17,16 @@ export function SectionIntro({
 
   return (
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <span className="eyebrow">
-        <Sparkles className="h-4 w-4" />
-        {eyebrow}
-      </span>
-      <Heading className="mt-5 text-3xl font-black tracking-normal text-[var(--foreground)] sm:text-4xl lg:text-5xl">{title}</Heading>
-      <p className="mt-4 text-base leading-7 text-[var(--muted)] sm:text-lg">{description}</p>
+      <span className="eyebrow">{eyebrow}</span>
+      <Heading
+        className={cn(
+          "mt-5 max-w-full break-words text-3xl font-black leading-tight tracking-normal text-[var(--foreground)] [text-wrap:balance] sm:text-4xl lg:text-5xl",
+          center && "mx-auto max-w-[22rem] sm:max-w-3xl"
+        )}
+      >
+        {title}
+      </Heading>
+      <p className={cn("mt-4 max-w-full text-base leading-7 text-[var(--muted)] [text-wrap:pretty] sm:text-lg", center && "mx-auto max-w-[18.5rem] sm:max-w-3xl")}>{description}</p>
     </div>
   );
 }

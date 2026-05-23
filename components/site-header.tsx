@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui/button";
@@ -18,36 +18,129 @@ const singleLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
+  useEffect(() => {
+    const closeDropdowns = () => {
+      setActiveDropdown(null);
+    };
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        closeDropdowns();
+      }
+    };
+
+    window.addEventListener("scroll", closeDropdowns, { passive: true });
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+
+    return () => {
+      window.removeEventListener("scroll", closeDropdowns);
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[rgba(30,34,51,0.08)] bg-[#fffdf7]/86 backdrop-blur-xl">
+    <header ref={headerRef} className="sticky top-0 z-50 border-b border-[rgba(30,34,51,0.08)] bg-[#fffdf7]/86 backdrop-blur-xl">
       <div className="container-pyne flex h-[72px] items-center justify-between gap-5">
         <SiteLogo />
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
           {navGroups.map((group) => (
-            <div className="group relative" key={group.title}>
-              <button className="focus-ring inline-flex items-center gap-1 rounded-full px-4 py-3 text-sm font-extrabold text-[var(--foreground)] transition hover:bg-white">
+            <div
+              className="relative"
+              key={group.title}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                  setActiveDropdown(null);
+                }
+              }}
+              onFocus={() => setActiveDropdown(group.title)}
+              onMouseEnter={() => {
+                setActiveDropdown(group.title);
+              }}
+              onMouseLeave={() => {
+                setActiveDropdown(null);
+              }}
+            >
+              <Link
+                href={group.href}
+                className={cn(
+                  "focus-ring inline-flex cursor-pointer items-center gap-1 rounded-full px-4 py-3 text-sm font-extrabold text-[var(--foreground)] transition hover:bg-white",
+                  (activeDropdown === group.title || pathname === group.href || pathname.startsWith(`${group.href}/`)) &&
+                    "bg-white text-[var(--primary-strong)]"
+                )}
+                aria-expanded={activeDropdown === group.title}
+                aria-haspopup="menu"
+                onClick={() => {
+                  setActiveDropdown(null);
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === "Escape") {
+                    setActiveDropdown(null);
+                  }
+                }}
+              >
                 {group.title}
-                <ChevronDown className="h-4 w-4" />
-              </button>
-              <div className="invisible absolute left-1/2 top-full w-[360px] -translate-x-1/2 translate-y-3 opacity-0 transition group-hover:visible group-hover:translate-y-1 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-1 group-focus-within:opacity-100">
-                <div className="rounded-[24px] border border-[rgba(30,34,51,0.1)] bg-white p-3 shadow-[0_24px_60px_rgba(47,75,111,0.16)]">
-                  {group.items.map((item) => (
-                    <Link
-                      href={item.href}
-                      key={item.href}
-                      className="focus-ring group/item flex items-start justify-between gap-4 rounded-2xl p-4 transition hover:bg-[#f5fbff]"
-                    >
-                      <span>
-                        <span className="block text-sm font-black">{item.title}</span>
-                        <span className="mt-1 block text-xs leading-5 text-[var(--muted)]">{item.description}</span>
-                      </span>
-                      <ArrowUpRight className="mt-0.5 h-4 w-4 text-[var(--primary-strong)] transition group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5" />
-                    </Link>
-                  ))}
-                </div>
-              </div>
+                <ChevronDown className={cn("h-4 w-4 transition", activeDropdown === group.title && "rotate-180")} />
+              </Link>
+              <AnimatePresence>
+                {activeDropdown === group.title ? (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 4 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute left-1/2 top-full w-[390px] -translate-x-1/2"
+                  >
+                    <div className="rounded-[22px] border border-[rgba(30,34,51,0.1)] bg-white p-2 shadow-[0_24px_60px_rgba(47,75,111,0.16)]">
+                      <Link
+                        href={group.href}
+                        className="focus-ring flex items-center justify-between gap-3 rounded-[16px] px-4 py-3 text-sm font-black text-[var(--primary-strong)] transition hover:bg-[#f7fbff]"
+                        onClick={() => {
+                          setActiveDropdown(null);
+                        }}
+                      >
+                        <span>{group.title} overview</span>
+                        <ArrowUpRight className="h-3.5 w-3.5 shrink-0" />
+                      </Link>
+                      {group.items.map((item) => {
+                        const isExternal = item.href.startsWith("http");
+                        const Icon = item.icon;
+
+                        return (
+                          <Link
+                            href={item.href}
+                            key={item.href}
+                            target={isExternal ? "_blank" : undefined}
+                            rel={isExternal ? "noreferrer" : undefined}
+                            className="focus-ring group/item flex items-start justify-between gap-4 border-t border-[rgba(30,34,51,0.07)] p-4 transition first:border-t-0 hover:bg-[#f7fbff]"
+                            onClick={() => {
+                              setActiveDropdown(null);
+                            }}
+                          >
+                            <span className="flex min-w-0 items-start gap-3">
+                              {Icon ? (
+                                <Icon
+                                  className="mt-0.5 h-4 w-4 shrink-0"
+                                  aria-hidden="true"
+                                  style={{ color: item.accent ?? "var(--primary-strong)" }}
+                                />
+                              ) : null}
+                              <span className="min-w-0">
+                                <span className="block text-sm font-black">{item.title}</span>
+                                <span className="mt-1 block text-xs leading-5 text-[var(--muted)]">{item.description}</span>
+                              </span>
+                            </span>
+                            <ArrowUpRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--primary-strong)] opacity-70 transition group-hover/item:translate-x-0.5 group-hover/item:-translate-y-0.5 group-hover/item:opacity-100" />
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                ) : null}
+              </AnimatePresence>
             </div>
           ))}
           {singleLinks.map((link) => (
@@ -91,19 +184,43 @@ export function SiteHeader() {
             <div className="container-pyne max-h-[calc(100vh-72px)] overflow-y-auto py-3">
               {navGroups.map((group) => (
                 <div className="py-3" key={group.title}>
-                  <p className="px-2 text-xs font-black uppercase text-[var(--primary-strong)]">{group.title}</p>
+                  <Link
+                    href={group.href}
+                    className="focus-ring mini-heading inline-flex px-2 py-1"
+                    onClick={() => setOpen(false)}
+                  >
+                    {group.title} overview
+                  </Link>
                   <div className="mt-2 grid gap-2">
-                    {group.items.map((item) => (
-                      <Link
-                        className="rounded-2xl bg-white p-4 text-sm font-black shadow-sm"
-                        href={item.href}
-                        key={item.href}
-                        onClick={() => setOpen(false)}
-                      >
-                        {item.title}
-                        <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--muted)]">{item.description}</span>
-                      </Link>
-                    ))}
+                    {group.items.map((item) => {
+                      const isExternal = item.href.startsWith("http");
+                      const Icon = item.icon;
+
+                      return (
+                        <Link
+                          className="flex items-start gap-3 rounded-2xl bg-white p-4 text-sm font-black shadow-sm"
+                          href={item.href}
+                          key={item.href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noreferrer" : undefined}
+                          onClick={() => setOpen(false)}
+                        >
+                          {Icon ? (
+                            <Icon
+                              className="mt-0.5 h-4 w-4 shrink-0"
+                              aria-hidden="true"
+                              style={{ color: item.accent ?? "var(--primary-strong)" }}
+                            />
+                          ) : null}
+                          <span>
+                            {item.title}
+                            <span className="mt-1 block text-xs font-semibold leading-5 text-[var(--muted)]">
+                              {item.description}
+                            </span>
+                          </span>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
