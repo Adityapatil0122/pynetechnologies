@@ -117,8 +117,14 @@ export default function ServicesPage() {
             {services.map((service, index) => (
               <Reveal key={service.slug} delay={index * 0.05} className={index === 0 ? "lg:col-span-2" : undefined}>
                 <Card className="group relative h-[460px] overflow-hidden p-0 transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_78px_rgba(47,75,111,0.16)]">
-                  <img src={service.image} alt={`${service.title} service preview`} className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-within:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,20,32,0.94)] via-[rgba(10,20,32,0.44)] to-[rgba(10,20,32,0.05)] transition duration-500 group-hover:via-[rgba(10,20,32,0.72)]" />
+                  <img
+                    src={service.image}
+                    alt={`${service.title} service preview`}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-within:scale-110"
+                    style={{ objectPosition: service.imagePosition ?? "center center" }}
+                  />
+                  <div className="service-card-wash" />
+                  <div className="service-card-scrim" />
                   <div className="absolute left-6 right-6 top-6 flex items-start justify-between gap-4">
                     <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/92 shadow-sm backdrop-blur" style={{ color: service.accent }}>
                       <service.icon className="h-7 w-7" />
@@ -127,7 +133,7 @@ export default function ServicesPage() {
                       0{index + 1}
                     </span>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white transition duration-500 ease-out sm:p-7 group-hover:-translate-y-6 group-focus-within:-translate-y-6">
+                  <div className="absolute inset-x-0 bottom-0 p-6 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] transition duration-500 ease-out sm:p-7 group-hover:-translate-y-6 group-focus-within:-translate-y-6">
                     <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/76">{service.kicker}</p>
                     <h3 className="mt-3 text-3xl font-black leading-tight">{service.title}</h3>
                     <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-out group-hover:mt-4 group-hover:max-h-64 group-hover:opacity-100 group-focus-within:mt-4 group-focus-within:max-h-64 group-focus-within:opacity-100">

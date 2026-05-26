@@ -79,16 +79,17 @@ function HeroSection() {
         <motion.div className="min-w-0 max-w-full" initial={false} animate="visible" variants={fadeUp} transition={{ duration: 0.7, ease: "easeOut" }}>
           <span className="eyebrow">
             <Sparkles className="h-4 w-4" />
-            Digital product studio in Satara
+            Satara studio for digital growth
           </span>
           <h1 className="mt-6 max-w-full break-words text-4xl font-black leading-[0.98] tracking-normal text-[var(--foreground)] sm:max-w-4xl sm:text-6xl lg:text-7xl">
-            <span className="block">Clean websites</span>
-            <span className="block">and apps for</span>
-            <span className="gradient-text block">growing businesses.</span>
+            <span className="block">Websites, apps</span>
+            <span className="block">and automation</span>
+            <span className="block">built to win</span>
+            <span className="gradient-text block">real customers.</span>
           </h1>
           <p className="mt-6 max-w-full text-lg leading-8 text-[var(--muted)] sm:max-w-2xl">
-            Pyne Technologies builds clear websites, useful apps, WhatsApp automation, digital campaigns, and brand
-            visuals that help businesses look modern and work better.
+            Pyne Technologies crafts fast websites, polished apps, WhatsApp flows, digital campaigns, and brand visuals
+            that make your business feel premium, trusted, and easy to choose.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="pop" size="lg">
@@ -349,8 +350,14 @@ function ServicesSection() {
             >
               <Link href={`/services/${service.slug}`} className="group block h-full">
                 <Card className="relative h-[430px] overflow-hidden p-0">
-                  <img src={service.image} alt="" className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-visible:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,20,32,0.92)] via-[rgba(10,20,32,0.42)] to-[rgba(10,20,32,0.04)] transition duration-500 group-hover:from-[rgba(10,20,32,0.96)] group-hover:via-[rgba(10,20,32,0.68)]" />
+                  <img
+                    src={service.image}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-visible:scale-110"
+                    style={{ objectPosition: service.imagePosition ?? "center center" }}
+                  />
+                  <div className="service-card-wash" />
+                  <div className="service-card-scrim" />
                   <div className="absolute left-6 right-6 top-6 flex items-center justify-between">
                     <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/92 shadow-sm backdrop-blur" style={{ color: service.accent }}>
                       <service.icon className="h-7 w-7" />
@@ -359,7 +366,7 @@ function ServicesSection() {
                       0{index + 1}
                     </span>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 p-7 text-white transition duration-500 ease-out group-hover:-translate-y-6 group-focus-visible:-translate-y-6">
+                  <div className="absolute inset-x-0 bottom-0 p-7 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] transition duration-500 ease-out group-hover:-translate-y-6 group-focus-visible:-translate-y-6">
                     <p className="mini-heading" style={{ "--mini-heading-color": "rgba(255,255,255,0.78)" } as CSSProperties}>{service.kicker}</p>
                     <h3 className="mt-3 text-3xl font-black leading-tight">{service.title}</h3>
                     <div className="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-out group-hover:mt-4 group-hover:max-h-40 group-hover:opacity-100 group-focus-visible:mt-4 group-focus-visible:max-h-40 group-focus-visible:opacity-100">

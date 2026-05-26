@@ -58,7 +58,6 @@ textarea {
 
 img {
   max-width: 100%;
-  height: auto;
 }
 
 a,
@@ -109,6 +108,45 @@ button {
   letter-spacing: 0.14em;
   line-height: 1.3;
   text-transform: uppercase;
+}
+
+.service-card-wash,
+.service-card-scrim {
+  position: absolute;
+  inset: 0;
+  transition: background 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-card-wash {
+  background: rgba(8, 18, 30, 0.08);
+}
+
+.service-card-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(8, 18, 30, 0.34) 0%,
+    rgba(8, 18, 30, 0.14) 24%,
+    rgba(8, 18, 30, 0.04) 52%,
+    rgba(8, 18, 30, 0.02) 100%
+  );
+}
+
+.group:hover .service-card-wash,
+.group:focus-visible .service-card-wash,
+.group:focus-within .service-card-wash {
+  background: rgba(8, 18, 30, 0.16);
+}
+
+.group:hover .service-card-scrim,
+.group:focus-visible .service-card-scrim,
+.group:focus-within .service-card-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(8, 18, 30, 0.82) 0%,
+    rgba(8, 18, 30, 0.42) 44%,
+    rgba(8, 18, 30, 0.1) 74%,
+    rgba(8, 18, 30, 0.03) 100%
+  );
 }
 
 .client-logo-strip img,

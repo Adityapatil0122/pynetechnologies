@@ -5,7 +5,7 @@ import { seoMetadata } from "@/lib/seo";
 export const metadata: Metadata = seoMetadata({
   title: "Pyne Technologies - Web, Apps, Automation, Marketing and Design",
   description:
-    "Pyne Technologies builds clear websites, mobile apps, WhatsApp automation, marketing systems, UI/UX design, and graphic design for growing businesses.",
+    "Pyne Technologies crafts fast websites, polished apps, WhatsApp flows, digital campaigns, and brand visuals for growing businesses.",
   path: "/",
   keywords: ["web development Satara", "mobile app development", "business automation"]
 });

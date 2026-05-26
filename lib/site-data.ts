@@ -81,7 +81,8 @@ export const services: Service[] = [
     description: "Custom websites, eCommerce stores, and WordPress sites that load quickly and explain your business clearly.",
     icon: Globe2,
     accent: "#00B8FF",
-    image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1200&q=80",
+    image: "/services/website-development.jpg",
+    imagePosition: "center 48%",
     features: ["Custom web development", "eCommerce storefronts", "WordPress builds", "Performance optimization"],
     outcomes: ["Stronger first impression", "Clearer conversion paths", "Search-ready pages"]
   },
@@ -92,7 +93,8 @@ export const services: Service[] = [
     description: "Mobile and cross-platform apps for teams that need simple flows, clear dashboards, and reliable launch support.",
     icon: Smartphone,
     accent: "#FF6B5F",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+    image: "/services/app-development.jpg",
+    imagePosition: "center 50%",
     features: ["iOS and Android apps", "Cross-platform delivery", "Product dashboards", "Maintenance plans"],
     outcomes: ["Easy product flows", "Reliable release process", "Room to add new features"]
   },
@@ -103,7 +105,8 @@ export const services: Service[] = [
     description: "SEO, social media campaigns, paid ads, and launch plans that help the right people find you.",
     icon: Megaphone,
     accent: "#FFD84D",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    image: "/services/digital-marketing.jpg",
+    imagePosition: "center 50%",
     features: ["SEO strategy", "Social media campaigns", "Paid ad planning", "Analytics reporting"],
     outcomes: ["More qualified traffic", "Regular campaign activity", "Clearer growth reports"]
   },
@@ -114,7 +117,7 @@ export const services: Service[] = [
     description: "Official WhatsApp setup, green tick guidance, campaign templates, automation, and chatbot flows.",
     icon: MessageCircle,
     accent: "#92FFD0",
-    image: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80",
+    image: "/services/whatsapp-business.jpg",
     features: ["API setup", "Green tick guidance", "Broadcast flows", "Chatbot journeys"],
     outcomes: ["Faster lead response", "Better support availability", "Lower manual follow-up"]
   },
@@ -125,7 +128,7 @@ export const services: Service[] = [
     description: "Research, wireframes, prototypes, and visual design for products that feel easy to use.",
     icon: PenTool,
     accent: "#C9BBFF",
-    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=80",
+    image: "/services/ui-ux-design.jpg",
     features: ["User research", "Wireframing", "Visual design", "Usability testing"],
     outcomes: ["Less user confusion", "Clearer product structure", "Reusable design patterns"]
   },
@@ -136,7 +139,7 @@ export const services: Service[] = [
     description: "Logo systems, launch graphics, social media creatives, print assets, and campaign visuals for your brand.",
     icon: Palette,
     accent: "#B8FF2C",
-    image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1200&q=80",
+    image: "/services/graphics-designing.jpg",
     features: ["Brand identity", "Logo design", "Social media graphics", "Print-ready assets"],
     outcomes: ["Recognizable brand assets", "Faster content production", "Consistent visual style"]
   }

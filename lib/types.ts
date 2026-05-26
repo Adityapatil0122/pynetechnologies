@@ -22,6 +22,7 @@ export type Service = {
   icon: LucideIcon;
   accent: string;
   image: string;
+  imagePosition?: string;
   features: string[];
   outcomes: string[];
 };
