@@ -1,6 +1,6 @@
 <svg width="720" height="220" viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Pyne Technologies logo</title>
-  <desc id="desc">Bright P mark with circuit sparks and Pyne Technologies wordmark.</desc>
+  <title id="title">PYN Technologies logo</title>
+  <desc id="desc">Bright P mark with circuit sparks and PYN Technologies wordmark.</desc>
   <rect width="720" height="220" rx="42" fill="#FFFDF7"/>
   <g transform="translate(36 28)">
     <path d="M64 154V22h64c33.7 0 58 20.9 58 54.6 0 32.9-24.3 54.4-58 54.4H97v23H64Z" fill="#1E2233"/>
@@ -13,7 +13,7 @@
     <path d="M86 154c18-6 32-16 42-30" stroke="#00B8FF" stroke-width="8" stroke-linecap="round"/>
   </g>
   <g transform="translate(286 60)">
-    <text x="0" y="52" fill="#1E2233" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" letter-spacing="0">Pyne</text>
+    <text x="0" y="52" fill="#1E2233" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" letter-spacing="0">PYN</text>
     <text x="0" y="104" fill="#5C6377" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" letter-spacing="0">Technologies</text>
     <path d="M0 122h300" stroke="#00B8FF" stroke-width="8" stroke-linecap="round"/>
     <path d="M315 122h48" stroke="#B8FF2C" stroke-width="8" stroke-linecap="round"/>

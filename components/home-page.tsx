@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Check, Cpu, ExternalLink, Gauge, MousePointerClick, Radio, Smartphone, Sparkles, Zap } from "lucide-react";
+import { ArrowRight, Check, Cpu, ExternalLink, Gauge, MousePointerClick, Radio, Sparkles, Zap } from "lucide-react";
 import { motion } from "motion/react";
 import { useEffect, useState, type CSSProperties } from "react";
 import { AnimatedCounter } from "@/components/animated-counter";
@@ -37,15 +37,6 @@ const cockpitModes = [
     stack: ["Chatbot", "Routing", "Handoff"]
   },
   {
-    label: "App plan",
-    title: "Product flow",
-    metric: "4",
-    metricLabel: "core screens",
-    accent: "#FF6B5F",
-    icon: Smartphone,
-    stack: ["Login", "Dashboard", "Reports"]
-  },
-  {
     label: "Campaign plan",
     title: "Launch plan",
     metric: "3x",
@@ -75,7 +66,7 @@ export function HomePage() {
 function HeroSection() {
   return (
     <section className="noise relative overflow-hidden py-10 sm:py-14 lg:py-18">
-      <div className="container-pyne relative z-10 grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="container-pyn relative z-10 grid items-start gap-10 lg:grid-cols-[1.04fr_0.96fr] xl:gap-12">
         <motion.div className="min-w-0 max-w-full" initial={false} animate="visible" variants={fadeUp} transition={{ duration: 0.7, ease: "easeOut" }}>
           <span className="eyebrow">
             <Sparkles className="h-4 w-4" />
@@ -88,7 +79,7 @@ function HeroSection() {
             <span className="gradient-text block">real customers.</span>
           </h1>
           <p className="mt-6 max-w-full text-lg leading-8 text-[var(--muted)] sm:max-w-2xl">
-            Pyne Technologies crafts fast websites, polished apps, WhatsApp flows, digital campaigns, and brand visuals
+            PYN Technologies crafts fast websites, polished apps, WhatsApp flows, digital campaigns, and brand visuals
             that make your business feel premium, trusted, and easy to choose.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -139,18 +130,18 @@ function LaunchCockpit() {
       initial={false}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.9, ease: "easeOut" }}
-      className="relative min-h-[390px] min-w-0 max-w-full pt-4 sm:min-h-[500px] lg:-mt-4"
-      aria-label="Interactive Pyne project planner"
+      className="relative min-h-[390px] min-w-0 max-w-full pt-4 sm:min-h-[500px] lg:-mt-4 lg:min-h-[530px]"
+      aria-label="Interactive PYN project planner"
     >
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-        className="hero-spin-slow absolute left-1/2 top-[47%] h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[rgba(30,34,51,0.14)] sm:h-[430px] sm:w-[430px]"
+        className="hero-spin-slow absolute left-1/2 top-[47%] h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[rgba(30,34,51,0.14)] sm:h-[430px] sm:w-[430px] xl:h-[500px] xl:w-[500px]"
       />
       <motion.div
         animate={{ rotate: -360 }}
         transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
-        className="hero-spin-reverse absolute left-1/2 top-[47%] h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgba(0,184,255,0.22)] sm:h-[330px] sm:w-[330px]"
+        className="hero-spin-reverse absolute left-1/2 top-[47%] h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[rgba(0,184,255,0.22)] sm:h-[330px] sm:w-[330px] xl:h-[385px] xl:w-[385px]"
       />
       {cockpitModes.map((item, index) => {
         const angle = (index / cockpitModes.length) * Math.PI * 2 - Math.PI / 2;
@@ -183,7 +174,7 @@ function LaunchCockpit() {
           </motion.button>
         );
       })}
-      <div className="hero-breathe relative z-10 mx-auto mt-16 max-w-[390px] overflow-hidden rounded-[32px] border border-white bg-white/90 p-4 shadow-[0_30px_80px_rgba(47,75,111,0.18)] backdrop-blur sm:mt-14 sm:p-5">
+      <div className="hero-breathe relative z-10 mx-auto mt-16 max-w-[390px] overflow-hidden rounded-[32px] border border-white bg-white/90 p-4 shadow-[0_30px_80px_rgba(47,75,111,0.18)] backdrop-blur sm:mt-14 sm:p-5 xl:max-w-[430px]">
         <div className="rounded-[26px] bg-[#f5fbff] p-4">
           <div className="flex items-center justify-between gap-3">
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-black text-[var(--primary-strong)] shadow-sm">
@@ -314,7 +305,7 @@ function SignalPlayground({ accent, labels, active }: { accent: string; labels: 
 function StatsStrip() {
   return (
     <section className="py-4">
-      <div className="container-pyne grid gap-3 rounded-[30px] border border-[rgba(30,34,51,0.1)] bg-white/82 p-3 shadow-[0_24px_70px_rgba(47,75,111,0.1)] sm:grid-cols-2 lg:grid-cols-4">
+      <div className="container-pyn grid gap-3 rounded-[30px] border border-[rgba(30,34,51,0.1)] bg-white/82 p-3 shadow-[0_24px_70px_rgba(47,75,111,0.1)] sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div className="rounded-[22px] bg-[#f5fbff] p-6 text-center" key={stat.label}>
             <p className="text-4xl font-black text-[var(--primary-strong)]">
@@ -331,11 +322,11 @@ function StatsStrip() {
 function ServicesSection() {
   return (
     <section className="section-y">
-      <div className="container-pyne">
+      <div className="container-pyn">
         <SectionIntro
           eyebrow="Web services"
           title="Everything needed to make your online presence work better."
-          description="From fast websites to campaign visuals, Pyne keeps strategy, design, code, automation, and launch support connected."
+          description="From fast websites to campaign visuals, PYN keeps strategy, design, code, automation, and launch support connected."
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
@@ -350,10 +341,12 @@ function ServicesSection() {
             >
               <Link href={`/services/${service.slug}`} className="group block h-full">
                 <Card className="relative h-[430px] overflow-hidden p-0">
-                  <img
+                  <Image
                     src={service.image}
                     alt=""
-                    className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-visible:scale-110"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-visible:scale-110"
                     style={{ objectPosition: service.imagePosition ?? "center center" }}
                   />
                   <div className="service-card-wash" />
@@ -390,7 +383,7 @@ function ServicesSection() {
 function AISection() {
   return (
     <section className="section-y bg-[#f2ffd0]">
-      <div className="container-pyne grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+      <div className="container-pyn grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <SectionIntro
           eyebrow="Automation"
           title="Useful systems for real business work."
@@ -422,12 +415,12 @@ function AISection() {
 function ProductsSection() {
   return (
     <section className="section-y bg-[#fff8ea]">
-      <div className="container-pyne">
+      <div className="container-pyn">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionIntro
             eyebrow="Products"
             title="Live products built for real business work."
-            description="Explore LMS, public websites, WhatsApp tools, insurance content, print ecommerce, and study hall software from the Pyne product shelf."
+            description="Explore LMS, public websites, WhatsApp tools, insurance content, print ecommerce, and study hall software from the PYN product shelf."
             center={false}
           />
           <Button asChild variant="outline">
@@ -501,7 +494,7 @@ function ProductsSection() {
 function ProcessSection() {
   return (
     <section className="section-y">
-      <div className="container-pyne">
+      <div className="container-pyn">
         <SectionIntro
           eyebrow="How we build"
           title="A clear path from idea to launch."
@@ -535,11 +528,11 @@ function ProcessSection() {
 function ClientsSection() {
   return (
     <section className="section-y overflow-hidden bg-[#e9fbff]">
-      <div className="container-pyne">
+      <div className="container-pyn">
         <SectionIntro
           eyebrow="Who we help"
           title="Built for businesses that need clearer digital experiences."
-          description="Pyne supports startups, education teams, local businesses, clinics, retail brands, hospitality teams, real estate, and service companies with practical digital systems."
+          description="PYN supports startups, education teams, local businesses, clinics, retail brands, hospitality teams, real estate, and service companies with practical digital systems."
         />
       </div>
       <div className="client-logo-strip mt-14 flex overflow-hidden py-5">
@@ -568,7 +561,7 @@ function ClientsSection() {
 function BlogPreview() {
   return (
     <section className="section-y">
-      <div className="container-pyne">
+      <div className="container-pyn">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionIntro
             eyebrow="Notes"
@@ -583,15 +576,18 @@ function BlogPreview() {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {blogPosts.slice(0, 3).map((post) => (
             <Link key={post.slug} href={`/blogs/${post.slug}`} className="group block overflow-hidden rounded-[24px] border border-[rgba(30,34,51,0.1)] bg-white shadow-[0_18px_44px_rgba(47,75,111,0.08)]">
-              <div className="relative h-44 overflow-hidden bg-[#075eb8]">
-                <img src={post.image} alt="" className="h-full w-full object-cover opacity-[0.58] mix-blend-luminosity transition duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(2,42,112,0.48),rgba(0,184,255,0.34))]" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(2,17,54,0.66)] via-transparent to-transparent" />
+              <div className="relative h-44 overflow-hidden bg-[#f5fbff]">
+                <Image
+                  src={post.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover transition duration-700 group-hover:scale-105"
+                />
               </div>
               <div className="p-6">
                 <p className="mini-heading">{post.category}</p>
-                <h3 className="mt-3 text-xl font-black leading-tight">{post.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[var(--muted)]">{post.excerpt}</p>
+                <h3 className="mt-3 line-clamp-2 text-xl font-black leading-tight">{post.title}</h3>
               </div>
             </Link>
           ))}
@@ -604,7 +600,7 @@ function BlogPreview() {
 function ContactCTA() {
   return (
     <section className="section-y bg-[#fff0ec]">
-      <div className="container-pyne grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+      <div className="container-pyn grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <div>
           <span className="eyebrow">
             <Check className="h-4 w-4" />

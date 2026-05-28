@@ -10,7 +10,7 @@ type Props = {
 
 export const metadata: Metadata = seoMetadata({
   title: "Blogs",
-  description: "Read simple notes from Pyne Technologies on web design, automation, marketing, and product planning.",
+  description: "Read simple notes from PYN Technologies on web design, automation, marketing, and product planning.",
   path: "/blogs",
   keywords: ["web design blog", "automation blog", "digital marketing tips"]
 });
@@ -20,14 +20,14 @@ export default async function BlogsPage({ searchParams }: Props) {
 
   return (
     <section className="section-y">
-      <div className="container-pyne">
+      <div className="container-pyn">
         <SectionIntro
           eyebrow="Blogs"
           title="Simple ideas for better digital work."
           description="Short, practical reads on websites, automation, marketing, and product planning."
           headingLevel="h1"
         />
-        <BlogDirectory posts={blogPosts} initialCategory={params?.category} initialQuery={params?.tag} />
+        <BlogDirectory key={`${params?.category ?? "all"}-${params?.tag ?? ""}`} posts={blogPosts} initialCategory={params?.category} initialQuery={params?.tag} />
       </div>
     </section>
   );

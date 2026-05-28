@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { buildPyneAiSystemPrompt, getFallbackPyneAiReply, type PyneAiMessage } from "@/lib/pyne-ai";
+import { buildPynAiSystemPrompt, getFallbackPynAiReply, type PynAiMessage } from "@/lib/pyn-ai";
 
-type PyneAiRequest = {
-  messages?: PyneAiMessage[];
+type PynAiRequest = {
+  messages?: PynAiMessage[];
 };
 
 function pickExternalReply(payload: unknown) {
@@ -28,16 +28,16 @@ function pickExternalReply(payload: unknown) {
 }
 
 export async function POST(request: Request) {
-  const body = (await request.json().catch(() => ({}))) as PyneAiRequest;
+  const body = (await request.json().catch(() => ({}))) as PynAiRequest;
   const messages = body.messages?.filter((message) => message.content.trim()) ?? [];
   const lastUserMessage = [...messages].reverse().find((message) => message.role === "user")?.content ?? "";
 
   if (!lastUserMessage) {
-    return NextResponse.json({ reply: "Ask me about Pyne services, automation, apps, websites, pricing, or contact details." });
+    return NextResponse.json({ reply: "Ask me about PYN services, automation, apps, websites, pricing, or contact details." });
   }
 
-  const apiUrl = process.env.PYNE_AI_API_URL;
-  const apiKey = process.env.PYNE_AI_API_KEY;
+  const apiUrl = process.env.PYN_AI_API_URL;
+  const apiKey = process.env.PYN_AI_API_KEY;
 
   if (apiUrl) {
     try {
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
           ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {})
         },
         body: JSON.stringify({
-          system: buildPyneAiSystemPrompt(),
+          system: buildPynAiSystemPrompt(),
           messages
         })
       });
@@ -65,5 +65,5 @@ export async function POST(request: Request) {
     }
   }
 
-  return NextResponse.json({ reply: getFallbackPyneAiReply(lastUserMessage) });
+  return NextResponse.json({ reply: getFallbackPynAiReply(lastUserMessage) });
 }

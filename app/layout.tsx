@@ -22,13 +22,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(brand.url),
   applicationName: brand.name,
   title: {
-    default: "Pyne Technologies - Web, Apps, Automation, Marketing and Design",
-    template: "%s | Pyne Technologies"
+    default: "PYN Technologies - Web, Apps, Automation, Marketing and Design",
+    template: "%s | PYN Technologies"
   },
   description:
-    "Pyne Technologies builds websites, apps, WhatsApp automation, digital marketing systems, UI/UX design, and graphic design for growing businesses.",
+    "PYN Technologies builds websites, apps, WhatsApp automation, digital marketing systems, UI/UX design, and graphic design for growing businesses.",
   keywords: [
-    "Pyne Technologies",
+    "PYN Technologies",
     "website development company",
     "app development company",
     "automation services",
@@ -57,19 +57,19 @@ export const metadata: Metadata = {
     }
   },
   openGraph: {
-    title: "Pyne Technologies",
+    title: "PYN Technologies",
     description: "Websites, apps, automation, marketing, UI/UX design, and graphic design for growing businesses.",
     url: absoluteUrl(),
-    siteName: "Pyne Technologies",
-    images: [{ url: "/pyne-logo.svg", width: 1200, height: 630, alt: "Pyne Technologies logo" }],
+    siteName: "PYN Technologies",
+    images: [{ url: "/pyn-logo.svg", width: 1200, height: 630, alt: "PYN Technologies logo" }],
     locale: "en_IN",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pyne Technologies",
+    title: "PYN Technologies",
     description: "Websites, apps, automation, marketing, and design for growing businesses.",
-    images: ["/pyne-logo.svg"]
+    images: ["/pyn-logo.svg"]
   },
   icons: {
     icon: "/favicon.svg",
@@ -89,8 +89,8 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     "@type": ["Organization", "LocalBusiness"],
     name: brand.name,
     url: brand.url,
-    logo: absoluteUrl("/pyne-logo.svg"),
-    image: absoluteUrl("/pyne-logo.svg"),
+    logo: absoluteUrl("/pyn-logo.svg"),
+    image: absoluteUrl("/pyn-logo.svg"),
     email: brand.email,
     telephone: `+${brand.whatsappNumber}`,
     description: brand.tagline,
@@ -112,7 +112,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Pyne Technologies services",
+      name: "PYN Technologies services",
       itemListElement: [...services, ...aiSolutions].map((item) => ({
         "@type": "Offer",
         itemOffered: {
@@ -133,7 +133,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}
         />
         <SiteHeader />
-        <main className="page-shell">{children}</main>
+        <main className="page-shell pt-[72px]">{children}</main>
         <SiteFooter />
         <FloatingQuickNav />
         <FloatingWhatsApp />

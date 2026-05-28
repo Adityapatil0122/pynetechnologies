@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Bookmark, ChevronLeft, ChevronRight, Clock, Search, SlidersHorizontal, Tags } from "lucide-react";
 import type { BlogPost } from "@/lib/types";
@@ -72,24 +73,6 @@ export function BlogDirectory({ posts, initialCategory, initialQuery }: BlogDire
   const paginatedPosts = filteredPosts.slice((visiblePage - 1) * postsPerPage, visiblePage * postsPerPage);
   const recentPosts = posts.slice(0, 5);
 
-  useEffect(() => {
-    setActiveCategory(requestedCategory);
-  }, [requestedCategory]);
-
-  useEffect(() => {
-    setQuery(initialQuery ?? "");
-  }, [initialQuery]);
-
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [activeCategory, query, sortMode]);
-
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages);
-    }
-  }, [currentPage, totalPages]);
-
   const showPage = (page: number) => {
     setCurrentPage(page);
     resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -97,6 +80,7 @@ export function BlogDirectory({ posts, initialCategory, initialQuery }: BlogDire
 
   const selectCategory = (name: string) => {
     setActiveCategory(name);
+    setCurrentPage(1);
 
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
@@ -112,12 +96,23 @@ export function BlogDirectory({ posts, initialCategory, initialQuery }: BlogDire
 
   const selectTag = (tag: string) => {
     setQuery(tag);
+    setCurrentPage(1);
 
     if (typeof window !== "undefined") {
       const url = new URL(window.location.href);
       url.searchParams.set("tag", tag);
       window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
     }
+  };
+
+  const updateSortMode = (value: SortMode) => {
+    setSortMode(value);
+    setCurrentPage(1);
+  };
+
+  const updateQuery = (value: string) => {
+    setQuery(value);
+    setCurrentPage(1);
   };
 
   return (
@@ -134,7 +129,7 @@ export function BlogDirectory({ posts, initialCategory, initialQuery }: BlogDire
           <label className="flex w-full max-w-xs items-center gap-3 rounded-full border border-[rgba(30,34,51,0.12)] bg-white px-4 py-3 text-sm font-black shadow-sm xl:w-auto">
             <SlidersHorizontal className="h-4 w-4 text-[var(--primary-strong)]" />
             <span className="sr-only">Sort articles</span>
-            <select className="w-full bg-transparent text-[var(--foreground)] outline-none" value={sortMode} onChange={(event) => setSortMode(event.target.value as SortMode)}>
+            <select className="w-full bg-transparent text-[var(--foreground)] outline-none" value={sortMode} onChange={(event) => updateSortMode(event.target.value as SortMode)}>
               {sortLabels.map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -196,7 +191,7 @@ export function BlogDirectory({ posts, initialCategory, initialQuery }: BlogDire
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--muted)]" />
                 <input
                   value={query}
-                  onChange={(event) => setQuery(event.target.value)}
+                  onChange={(event) => updateQuery(event.target.value)}
                   placeholder="Search articles..."
                   className="focus-ring h-12 w-full rounded-full border border-[rgba(30,34,51,0.1)] bg-[#f8fbff] pl-12 pr-4 text-sm font-bold outline-none placeholder:text-[#8b94a7]"
                   type="search"
@@ -241,7 +236,7 @@ export function BlogDirectory({ posts, initialCategory, initialQuery }: BlogDire
               {recentPosts.map((post) => (
                 <Link key={post.slug} href={`/blogs/${post.slug}`} className="group flex gap-4 p-4 transition hover:bg-[#f8fbff]">
                   <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-[#075eb8]">
-                    <img src={post.image} alt="" className="h-full w-full object-cover opacity-[0.62] mix-blend-luminosity" />
+                    <Image src={post.image} alt="" fill sizes="64px" className="object-cover opacity-[0.62] mix-blend-luminosity" />
                     <span className="absolute inset-0 bg-[linear-gradient(135deg,rgba(2,42,112,0.42),rgba(0,184,255,0.32))]" />
                   </span>
                   <div className="min-w-0">
@@ -333,7 +328,13 @@ function ArticleCard({ post }: { post: BlogPost }) {
       className="group flex h-full min-w-0 flex-col overflow-hidden rounded-[26px] border border-[rgba(30,34,51,0.1)] bg-white shadow-[0_18px_54px_rgba(47,75,111,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(47,75,111,0.14)]"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-[#075eb8]">
-        <img src={post.image} alt="" className="h-full w-full object-cover opacity-[0.58] mix-blend-luminosity transition duration-700 group-hover:scale-105" />
+        <Image
+          src={post.image}
+          alt=""
+          fill
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="object-cover opacity-[0.58] mix-blend-luminosity transition duration-700 group-hover:scale-105"
+        />
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(2,42,112,0.48),rgba(0,184,255,0.36))]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(2,17,54,0.72)] via-transparent to-transparent" />
         <span className="absolute right-4 top-4 max-w-[calc(100%-2rem)] truncate rounded-l-full bg-[var(--primary)] px-4 py-2 text-xs font-black text-white shadow-sm">{post.category}</span>

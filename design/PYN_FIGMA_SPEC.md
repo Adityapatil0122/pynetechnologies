@@ -1,6 +1,6 @@
-# Pyne Technologies Figma Spec
+# PYN Technologies Figma Spec
 
-This spec is the source of truth for recreating the Pyne Technologies design in Figma when a Figma file connection is available.
+This spec is the source of truth for recreating the PYN Technologies design in Figma when a Figma file connection is available.
 
 ## Frames
 
@@ -12,8 +12,8 @@ This spec is the source of truth for recreating the Pyne Technologies design in 
 
 ## Brand System
 
-- Logo: use `public/pyne-logo.svg`; bright P mark with circuit/spark/motion styling plus Pyne Technologies wordmark.
-- Color tokens are in `design/pyne-design-tokens.json`.
+- Logo: use `public/pyn-logo.svg`; bright P mark with circuit/spark/motion styling plus PYN Technologies wordmark.
+- Color tokens are in `design/pyn-design-tokens.json`.
 - Use light surfaces only. No dark mode and no dark section backgrounds.
 - Buttons are rounded pills. Cards are 24px radius. Large panels are 30px radius.
 - Typography should be bold and friendly: display headings at 900 weight, body at 600.

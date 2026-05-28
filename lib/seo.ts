@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { brand } from "@/lib/site-data";
 import { absoluteUrl } from "@/lib/utils";
 
-const defaultImage = "/pyne-logo.svg";
+const defaultImage = "/pyn-logo.svg";
 
 const baseKeywords = [
-  "Pyne Technologies",
+  "PYN Technologies",
   "website development",
   "app development",
   "automation",

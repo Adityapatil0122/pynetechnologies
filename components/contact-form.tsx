@@ -48,7 +48,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
     window.open(`https://wa.me/${brand.whatsappNumber}?text=${encoded}`, "_blank", "noopener,noreferrer");
   }
 
-  const emailHref = `mailto:${brand.email}?subject=${encodeURIComponent("Project inquiry for Pyne Technologies")}&body=${encodeURIComponent(buildMessage())}`;
+  const emailHref = `mailto:${brand.email}?subject=${encodeURIComponent("Project inquiry for PYN Technologies")}&body=${encodeURIComponent(buildMessage())}`;
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-4">
@@ -65,11 +65,11 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
           <Input value={form.phone} onChange={(event) => update("phone", event.target.value)} placeholder="Your phone" />
         </Field>
         <Field label="Project type">
-          <PyneDropdown value={form.interest} options={interests} onChange={(value) => update("interest", value)} />
+          <PYNDropdown value={form.interest} options={interests} onChange={(value) => update("interest", value)} />
         </Field>
       </div>
       <Field label="Service">
-        <PyneDropdown value={form.service} options={serviceOptions} onChange={(value) => update("service", value)} />
+        <PYNDropdown value={form.service} options={serviceOptions} onChange={(value) => update("service", value)} />
       </Field>
       <Field label="Message">
         <Textarea value={form.message} onChange={(event) => update("message", event.target.value)} placeholder="Tell us about your project" />
@@ -90,7 +90,7 @@ export function ContactForm({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function PyneDropdown({
+function PYNDropdown({
   value,
   options,
   onChange

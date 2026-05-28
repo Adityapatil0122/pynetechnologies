@@ -70,8 +70,8 @@ button {
   color: var(--foreground);
 }
 
-.container-pyne {
-  width: min(1240px, calc(100% - clamp(24px, 5vw, 56px)));
+.container-pyn {
+  width: min(1520px, calc(100% - clamp(24px, 6vw, 128px)));
   margin-inline: auto;
 }
 

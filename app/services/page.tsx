@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Compass, Layers3, LineChart, Rocket, Sparkles } from "lucide-react";
 import { Reveal } from "@/components/reveal";
@@ -10,7 +11,7 @@ import { services } from "@/lib/site-data";
 export const metadata: Metadata = seoMetadata({
   title: "Digital Services",
   description:
-    "Explore website development, app development, digital marketing, WhatsApp Business API, UI/UX design, and graphic design services from Pyne Technologies.",
+    "Explore website development, app development, digital marketing, WhatsApp Business API, UI/UX design, and graphic design services from PYN Technologies.",
   path: "/services",
   keywords: ["digital services", "website development", "app development", "graphic design"]
 });
@@ -49,16 +50,19 @@ export default function ServicesPage() {
     <>
       <section className="relative overflow-hidden bg-[#f5fbff]">
         <div className="absolute inset-0">
-          <img
+          <Image
             src={heroImage}
             alt="Team workspace with laptops, notes, and planning material"
-            className="h-full w-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#fffdf7] via-[#fffdf7]/88 to-[#fffdf7]/28" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#fffdf7] to-transparent" />
         </div>
 
-        <div className="container-pyne relative z-10 grid min-h-[560px] items-end gap-8 py-14 lg:grid-cols-[0.72fr_0.28fr] lg:py-20">
+        <div className="container-pyn relative z-10 grid min-h-[560px] items-end gap-8 py-14 lg:grid-cols-[0.72fr_0.28fr] lg:py-20">
           <Reveal className="max-w-3xl pb-4">
             <span className="eyebrow">
               <Sparkles className="h-4 w-4" />
@@ -68,7 +72,7 @@ export default function ServicesPage() {
               A complete digital service menu for growing businesses.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              This page brings every Web Services dropdown item into one clear place. Compare what Pyne builds, see what each service includes, and choose the right starting point.
+              This page brings every Web Services dropdown item into one clear place. Compare what PYN builds, see what each service includes, and choose the right starting point.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="pop" size="lg">
@@ -104,7 +108,7 @@ export default function ServicesPage() {
       </section>
 
       <section id="service-list" className="section-y bg-[#fffdf7]">
-        <div className="container-pyne">
+        <div className="container-pyn">
           <Reveal className="max-w-3xl">
             <span className="eyebrow">All services</span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-5xl">Each service has a clear role in your digital system.</h2>
@@ -117,10 +121,12 @@ export default function ServicesPage() {
             {services.map((service, index) => (
               <Reveal key={service.slug} delay={index * 0.05} className={index === 0 ? "lg:col-span-2" : undefined}>
                 <Card className="group relative h-[460px] overflow-hidden p-0 transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_78px_rgba(47,75,111,0.16)]">
-                  <img
+                  <Image
                     src={service.image}
                     alt={`${service.title} service preview`}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-within:scale-110"
+                    fill
+                    sizes={index === 0 ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
+                    className="object-cover transition duration-700 ease-out group-hover:scale-110 group-focus-within:scale-110"
                     style={{ objectPosition: service.imagePosition ?? "center center" }}
                   />
                   <div className="service-card-wash" />
@@ -164,12 +170,12 @@ export default function ServicesPage() {
       </section>
 
       <section className="section-y bg-[#e9fbff]">
-        <div className="container-pyne">
+        <div className="container-pyn">
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">Service paths</span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-5xl">Not sure which service to pick first?</h2>
             <p className="mt-4 text-lg leading-8 text-[var(--muted)]">
-              These common paths show how Pyne can combine services when one page, app, or campaign needs more than one skill.
+              These common paths show how PYN can combine services when one page, app, or campaign needs more than one skill.
             </p>
           </Reveal>
 
@@ -188,18 +194,18 @@ export default function ServicesPage() {
       </section>
 
       <section className="section-y bg-[#fff0ec]">
-        <div className="container-pyne grid gap-8 lg:grid-cols-[0.8fr_0.2fr] lg:items-center">
+        <div className="container-pyn grid gap-8 lg:grid-cols-[0.8fr_0.2fr] lg:items-center">
           <Reveal>
             <span className="eyebrow">Next step</span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-5xl">Tell us what you want the website, app, or campaign to do.</h2>
             <p className="mt-4 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Pyne will help you turn the service list into a simple plan with the right pages, screens, automations, and launch tasks.
+              PYN will help you turn the service list into a simple plan with the right pages, screens, automations, and launch tasks.
             </p>
           </Reveal>
           <Reveal delay={0.08}>
             <Button asChild variant="pop" size="lg" className="w-full">
               <Link href="/contact">
-                Contact Pyne
+                Contact PYN
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>

@@ -12,16 +12,16 @@ import { seoMetadata } from "@/lib/seo";
 export const metadata: Metadata = seoMetadata({
   title: "Products",
   description:
-    "Explore Pyne Technologies products including ITROOTS LMS, ITROOTS website and CMS, WhatsApp Business Suite, Insurance Majha, Quick Prints, and Study Room Management App.",
+    "Explore PYN Technologies products including ITROOTS LMS, ITROOTS website and CMS, WhatsApp Business Suite, Insurance Majha, Quick Prints, and Study Room Management App.",
   path: "/products",
-  keywords: ["Pyne products", "ITROOTS LMS", "WhatsApp Business Suite", "Insurance Majha", "Quick Prints ecommerce"]
+  keywords: ["PYN products", "ITROOTS LMS", "WhatsApp Business Suite", "Insurance Majha", "Quick Prints ecommerce"]
 });
 
 export default function ProductsPage() {
   return (
     <>
       <section className="section-y overflow-hidden bg-[#e9fbff]">
-        <div className="container-pyne grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="container-pyn grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <span className="eyebrow">
               <Sparkles className="h-4 w-4" />
@@ -64,7 +64,7 @@ export default function ProductsPage() {
       </section>
 
       <section className="section-y">
-        <div className="container-pyne">
+        <div className="container-pyn">
           <SectionIntro
             eyebrow="Product list"
             title="Each product has its own clear job."

@@ -9,9 +9,9 @@ import { brand } from "@/lib/site-data";
 export const metadata: Metadata = seoMetadata({
   title: "Contact",
   description:
-    "Contact Pyne Technologies for website development, app development, WhatsApp automation, marketing, UI/UX design, graphic design, and automation projects.",
+    "Contact PYN Technologies for website development, app development, WhatsApp automation, marketing, UI/UX design, graphic design, and automation projects.",
   path: "/contact",
-  keywords: ["contact Pyne Technologies", "web development inquiry", "app development inquiry"]
+  keywords: ["contact PYN Technologies", "web development inquiry", "app development inquiry"]
 });
 
 export default function ContactPage() {
@@ -52,7 +52,7 @@ export default function ContactPage() {
     <section className="relative overflow-hidden py-14 sm:py-18 lg:py-24">
       <div className="absolute inset-x-0 top-0 h-[44%] bg-[#e9fbff]" />
       <div className="noise absolute inset-x-0 top-0 h-[44%]" />
-      <div className="container-pyne relative z-10">
+      <div className="container-pyn relative z-10">
         <Reveal className="mx-auto max-w-3xl text-center">
           <span className="eyebrow">
             <Sparkles className="h-4 w-4" />

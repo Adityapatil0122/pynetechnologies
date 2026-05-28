@@ -18,9 +18,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!page) return {};
   return seoMetadata({
     title: page.title,
-    description: `${page.title} for Pyne Technologies.`,
+    description: `${page.title} for PYN Technologies.`,
     path: `/legal/${page.slug}`,
-    keywords: [page.title, "Pyne Technologies legal"]
+    keywords: [page.title, "PYN Technologies legal"]
   });
 }
 
@@ -31,7 +31,7 @@ export default async function LegalPage({ params }: Props) {
 
   return (
     <section className="section-y">
-      <Reveal className="container-pyne max-w-3xl">
+      <Reveal className="container-pyn max-w-3xl">
         <span className="eyebrow">Legal</span>
         <h1 className="mt-6 text-4xl font-black leading-tight sm:text-5xl">{page.title}</h1>
         <p className="mt-3 text-sm font-bold text-[var(--muted)]">Last updated: {page.updated}</p>

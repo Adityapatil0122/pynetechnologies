@@ -11,7 +11,7 @@ import { seoMetadata } from "@/lib/seo";
 export const metadata: Metadata = seoMetadata({
   title: "Study Room Management App",
   description:
-    "Coming soon from Pyne Technologies: a study room and Abhyasika management app for seats, fees, renewals, student records, and reminders.",
+    "Coming soon from PYN Technologies: a study room and Abhyasika management app for seats, fees, renewals, student records, and reminders.",
   path: "/products/study-room",
   keywords: ["study room management app", "Abhyasika management", "study hall software"]
 });
@@ -27,7 +27,7 @@ export default function StudyRoomPage() {
   return (
     <>
       <section className="section-y bg-[#e9fbff]">
-        <div className="container-pyne grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div className="container-pyn grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <Reveal>
             <span className="eyebrow">
               <GraduationCap className="h-4 w-4" />
@@ -64,7 +64,7 @@ export default function StudyRoomPage() {
         </div>
       </section>
       <section className="section-y">
-        <div className="container-pyne">
+        <div className="container-pyn">
           <SectionIntro
             eyebrow="Product modules"
             title="Clear modules for study hall teams."
@@ -84,14 +84,14 @@ export default function StudyRoomPage() {
         </div>
       </section>
       <section className="section-y bg-[#f2ffd0]">
-        <div className="container-pyne grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="container-pyn grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
             <span className="eyebrow">
               <CheckCircle2 className="h-4 w-4" />
               Early access
             </span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-4xl">Want this for your study hall?</h2>
-            <p className="mt-4 text-lg leading-8 text-[var(--muted)]">Share your workflow and Pyne will shape the launch list.</p>
+            <p className="mt-4 text-lg leading-8 text-[var(--muted)]">Share your workflow and PYN will shape the launch list.</p>
           </Reveal>
           <Reveal delay={0.08}>
           <Card className="p-5 sm:p-6">

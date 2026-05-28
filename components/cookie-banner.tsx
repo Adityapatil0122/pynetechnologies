@@ -9,13 +9,13 @@ export function CookieBanner() {
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
-      setVisible(localStorage.getItem("pyne-cookie-choice") === null);
+      setVisible(localStorage.getItem("pyn-cookie-choice") === null);
     });
     return () => window.cancelAnimationFrame(frame);
   }, []);
 
   function choose(value: string) {
-    localStorage.setItem("pyne-cookie-choice", value);
+    localStorage.setItem("pyn-cookie-choice", value);
     setVisible(false);
   }
 

@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function absoluteUrl(path = "") {
-  return `https://pynetechnologies.com${path}`;
+  return `https://pyntechnologies.com${path}`;
 }

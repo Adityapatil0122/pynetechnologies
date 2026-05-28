@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Activity, ArrowRight, Clock3, GitBranch, ShieldCheck, Sparkles, Zap } from "lucide-react";
@@ -11,7 +12,7 @@ import { aiSolutions } from "@/lib/site-data";
 export const metadata: Metadata = seoMetadata({
   title: "Automation Services",
   description:
-    "Pyne Technologies builds chatbots, workflow automation, API integrations, and analytics dashboards for business teams.",
+    "PYN Technologies builds chatbots, workflow automation, API integrations, and analytics dashboards for business teams.",
   path: "/automation",
   keywords: ["automation services", "chatbots", "API integrations", "analytics dashboards"]
 });
@@ -118,16 +119,19 @@ export default function AutomationPage() {
     <>
       <section className="relative overflow-hidden bg-[#f2ffd0]">
         <div className="absolute inset-0">
-          <img
+          <Image
             src={heroImage}
             alt="Analytics dashboard with charts and business data"
-            className="h-full w-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#f2ffd0] via-[#f2ffd0]/72 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#f2ffd0] to-transparent" />
         </div>
 
-        <div className="container-pyne relative z-10 flex min-h-[580px] items-end py-14 lg:py-20">
+        <div className="container-pyn relative z-10 flex min-h-[580px] items-end py-14 lg:py-20">
           <Reveal className="max-w-3xl pb-4">
             <span className="eyebrow">
               <Sparkles className="h-4 w-4" />
@@ -137,7 +141,7 @@ export default function AutomationPage() {
               We build AI solutions that save time and reduce daily work.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--muted)]">
-              Pyne helps your team reply faster, manage leads, connect tools, and see business data clearly. Start with one problem, and we turn it into a simple working system.
+              PYN helps your team reply faster, manage leads, connect tools, and see business data clearly. Start with one problem, and we turn it into a simple working system.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="cyan" size="lg">
@@ -155,12 +159,12 @@ export default function AutomationPage() {
       </section>
 
       <section id="automation-map" className="section-y bg-[#f2ffd0]">
-        <div className="container-pyne">
+        <div className="container-pyn">
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">AI solutions</span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-5xl">AI should fit into the way your business already works.</h2>
             <p className="mt-4 text-lg leading-8 text-[var(--muted)]">
-              Pick one area below. Pyne can build it as a small first system, then connect the rest when your team is ready.
+              Pick one area below. PYN can build it as a small first system, then connect the rest when your team is ready.
             </p>
           </Reveal>
 
@@ -177,7 +181,7 @@ export default function AutomationPage() {
                 <div className="absolute inset-16 rounded-full border border-[rgba(184,255,44,0.8)]" />
                 <div className="relative z-10 rounded-[36px] bg-[var(--foreground)] p-7 text-center text-white shadow-[0_28px_70px_rgba(30,34,51,0.24)]">
                   <Sparkles className="mx-auto h-10 w-10 text-[var(--lime)]" />
-                  <p className="mini-heading mt-4" style={{ "--mini-heading-color": "var(--mint)" } as CSSProperties}>Pyne AI hub</p>
+                  <p className="mini-heading mt-4" style={{ "--mini-heading-color": "var(--mint)" } as CSSProperties}>PYN AI hub</p>
                   <h3 className="mt-2 text-3xl font-black leading-tight">One system, four useful parts</h3>
                   <p className="mt-4 text-sm font-semibold leading-6 text-white/74">
                     Reply faster, reduce repeated work, connect tools, and understand your data.
@@ -196,7 +200,7 @@ export default function AutomationPage() {
       </section>
 
       <section className="section-y bg-[#fffdf7]">
-        <div className="container-pyne grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+        <div className="container-pyn grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
           <Reveal>
             <span className="eyebrow">
               <ShieldCheck className="h-4 w-4" />
@@ -204,7 +208,7 @@ export default function AutomationPage() {
             </span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-5xl">Automation should make the team calmer, not confused.</h2>
             <p className="mt-4 text-lg leading-8 text-[var(--muted)]">
-              Pyne keeps each solution simple: one clear problem, one useful flow, and one place to check the result. That makes it easier for your team to trust and use.
+              PYN keeps each solution simple: one clear problem, one useful flow, and one place to check the result. That makes it easier for your team to trust and use.
             </p>
           </Reveal>
 
@@ -233,7 +237,7 @@ export default function AutomationPage() {
         <div aria-hidden className="tech-cable tech-cable-one hidden lg:block" />
         <div aria-hidden className="tech-cable tech-cable-two hidden lg:block" />
         <div aria-hidden className="tech-cable tech-cable-three hidden lg:block" />
-        <div className="container-pyne relative z-10 grid gap-8 lg:grid-cols-[0.8fr_0.2fr] lg:items-center">
+        <div className="container-pyn relative z-10 grid gap-8 lg:grid-cols-[0.8fr_0.2fr] lg:items-center">
           <Reveal>
             <span className="eyebrow">Start small</span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-5xl">Pick one task you want to make easier.</h2>

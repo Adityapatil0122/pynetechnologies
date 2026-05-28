@@ -11,7 +11,7 @@ import { aiSolutions } from "@/lib/site-data";
 export const metadata: Metadata = seoMetadata({
   title: "Automation Services",
   description:
-    "Pyne Technologies builds chatbots, workflow automation, API integrations, and analytics dashboards for business teams.",
+    "PYN Technologies builds chatbots, workflow automation, API integrations, and analytics dashboards for business teams.",
   path: "/automation",
   keywords: ["automation services", "chatbots", "API integrations", "analytics dashboards"],
   noIndex: true
@@ -20,11 +20,11 @@ export const metadata: Metadata = seoMetadata({
 export default function AIPage() {
   return (
     <section className="section-y bg-[#f2ffd0]">
-      <div className="container-pyne">
+      <div className="container-pyn">
         <SectionIntro
           eyebrow="Automation"
           title="Automation that supports everyday business work."
-          description="Pyne plans systems around real tasks like support, lead handling, reporting, operations, and internal tools."
+          description="PYN plans systems around real tasks like support, lead handling, reporting, operations, and internal tools."
           headingLevel="h1"
         />
         <div className="mt-12 grid gap-6 md:grid-cols-2">

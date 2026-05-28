@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!solution) return {};
   return seoMetadata({
     title: solution.title,
-    description: `${solution.description} Pyne Technologies builds practical automation for lead handling, support, reporting, and internal tools.`,
+    description: `${solution.description} PYN Technologies builds practical automation for lead handling, support, reporting, and internal tools.`,
     path: `/automation/${solution.slug}`,
     keywords: [solution.title, ...solution.features],
     noIndex: true
@@ -38,7 +38,7 @@ export default async function AISolutionDetailPage({ params }: Props) {
   return (
     <>
       <section className="section-y bg-[#f2ffd0]">
-        <div className="container-pyne grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="container-pyn grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <Reveal>
             <span className="eyebrow">Automation</span>
             <h1 className="mt-6 text-4xl font-black leading-tight sm:text-6xl">{solution.title}</h1>
@@ -67,12 +67,12 @@ export default async function AISolutionDetailPage({ params }: Props) {
         </div>
       </section>
       <section className="section-y">
-        <div className="container-pyne grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="container-pyn grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
             <span className="eyebrow">Make it practical</span>
             <h2 className="mt-5 text-3xl font-black leading-tight sm:text-4xl">Start with the workflow, then choose the right tool.</h2>
             <p className="mt-4 text-lg leading-8 text-[var(--muted)]">
-              Share the task you want to speed up. Pyne can shape the flow, data setup, dashboard, and handoff.
+              Share the task you want to speed up. PYN can shape the flow, data setup, dashboard, and handoff.
             </p>
           </Reveal>
           <Reveal delay={0.08}>

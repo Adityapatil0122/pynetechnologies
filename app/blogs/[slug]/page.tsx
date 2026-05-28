@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Bookmark, CalendarDays, Clock, Tags } from "lucide-react";
@@ -48,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: post.title,
     description: post.excerpt,
     path: `/blogs/${post.slug}`,
-    keywords: [post.category, "Pyne Technologies blog", "digital business tips"],
+    keywords: [post.category, "PYN Technologies blog", "digital business tips"],
     image: post.image
   });
 }
@@ -67,7 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
     <article className="bg-[#f7fbff]">
       <BlogHero post={post} />
       <section className="pb-16 pt-6 md:pt-10">
-        <div className="container-pyne grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+        <div className="container-pyn grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
           <div className="min-w-0 overflow-hidden rounded-[28px] border border-[rgba(30,34,51,0.08)] bg-white p-5 shadow-[0_18px_54px_rgba(47,75,111,0.08)] sm:p-8 lg:p-10">
             <Button asChild variant="outline" size="sm">
               <Link href="/blogs">
@@ -76,8 +77,8 @@ export default async function BlogPostPage({ params }: Props) {
               </Link>
             </Button>
 
-            <div className="mt-8 overflow-hidden rounded-[24px] bg-[#eef8ff]">
-              <img src={post.image} alt="" className="h-64 w-full object-cover sm:h-[400px]" />
+            <div className="relative mt-8 h-64 overflow-hidden rounded-[24px] bg-[#eef8ff] sm:h-[400px]">
+              <Image src={post.image} alt="" fill sizes="(min-width: 1024px) 760px, 100vw" className="object-cover" />
             </div>
 
             <div className="mt-8 rounded-[24px] bg-[#f8fbff] p-5 sm:p-7">
@@ -116,7 +117,7 @@ function BlogHero({ post }: { post: BlogPost }) {
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-[0.42] mix-blend-luminosity" style={{ backgroundImage: `url(${post.image})` }} />
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(2,42,112,0.94)_0%,rgba(0,108,216,0.86)_52%,rgba(0,184,255,0.76)_100%)]" />
       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(2,17,54,0.82)] via-[rgba(0,100,205,0.18)] to-[rgba(102,218,255,0.22)]" />
-      <div className="container-pyne relative z-10">
+      <div className="container-pyn relative z-10">
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <Link
             href={`/blogs?category=${encodeURIComponent(post.category)}`}
@@ -243,7 +244,7 @@ function CompactPostLink({ post }: { post: BlogPost }) {
   return (
     <Link href={`/blogs/${post.slug}`} className="group flex gap-4 rounded-2xl p-3 transition hover:bg-[#f8fbff]">
       <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-[#075eb8]">
-        <img src={post.image} alt="" className="h-full w-full object-cover opacity-[0.62] mix-blend-luminosity" />
+        <Image src={post.image} alt="" fill sizes="64px" className="object-cover opacity-[0.62] mix-blend-luminosity" />
         <span className="absolute inset-0 bg-[linear-gradient(135deg,rgba(2,42,112,0.42),rgba(0,184,255,0.32))]" />
       </span>
       <div className="min-w-0">

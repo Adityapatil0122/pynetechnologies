@@ -12,9 +12,9 @@ import { clients } from "@/lib/site-data";
 
 export const metadata: Metadata = seoMetadata({
   title: "Our Clients",
-  description: "See the client brands Pyne Technologies supports with websites, apps, automation, marketing, and design.",
+  description: "See the client brands PYN Technologies supports with websites, apps, automation, marketing, and design.",
   path: "/clients",
-  keywords: ["Pyne Technologies clients", "digital project clients", "business website clients"]
+  keywords: ["PYN Technologies clients", "digital project clients", "business website clients"]
 });
 
 const clientStats = [
@@ -35,7 +35,7 @@ export default function ClientsPage() {
     <>
       <section className="relative overflow-hidden bg-[#f2ffd0] py-16 sm:py-20 lg:py-24">
         <div className="absolute inset-x-0 top-0 h-px bg-[rgba(30,34,51,0.08)]" />
-        <div className="container-pyne grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+        <div className="container-pyn grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <Reveal>
             <span className="eyebrow">Our Clients</span>
             <h1 className="mt-6 max-w-3xl text-4xl font-black leading-tight sm:text-6xl">
@@ -90,7 +90,7 @@ export default function ClientsPage() {
       </section>
 
       <section className="section-y bg-[#f7fdff]">
-        <div className="container-pyne">
+        <div className="container-pyn">
           <Reveal>
             <SectionIntro
               eyebrow="Impact"
@@ -114,7 +114,7 @@ export default function ClientsPage() {
       </section>
 
       <section id="client-logos" className="section-y">
-        <div className="container-pyne">
+        <div className="container-pyn">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <Reveal className="md:max-w-2xl">
               <SectionIntro
@@ -160,7 +160,7 @@ export default function ClientsPage() {
       </section>
 
       <section className="pb-16 sm:pb-20 lg:pb-24">
-        <div className="container-pyne">
+        <div className="container-pyn">
           <Reveal>
             <div className="grid gap-8 overflow-hidden rounded-[28px] bg-[var(--foreground)] p-8 text-white shadow-[0_28px_80px_rgba(30,34,51,0.22)] md:grid-cols-[1fr_auto] md:items-center md:p-10">
               <div>
@@ -172,7 +172,7 @@ export default function ClientsPage() {
                   Bring the same clean digital presence to your brand.
                 </h2>
                 <p className="mt-4 max-w-2xl text-base leading-7 text-white/72">
-                  Share what you want to launch, improve, or automate. Pyne can shape the page, flow, and delivery plan.
+                  Share what you want to launch, improve, or automate. PYN can shape the page, flow, and delivery plan.
                 </p>
               </div>
               <Button asChild variant="pop" className="w-full md:w-auto">

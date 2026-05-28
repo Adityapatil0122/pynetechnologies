@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
-import type { PyneAiMessage } from "@/lib/pyne-ai";
+import type { PynAiMessage } from "@/lib/pyn-ai";
 
-export function ChatMessage({ message }: { message: PyneAiMessage }) {
+export function ChatMessage({ message }: { message: PynAiMessage }) {
   const isAssistant = message.role === "assistant";
 
   return (

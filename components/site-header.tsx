@@ -43,8 +43,8 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 border-b border-[rgba(30,34,51,0.08)] bg-[#fffdf7]/86 backdrop-blur-xl">
-      <div className="container-pyne flex h-[72px] items-center justify-between gap-5">
+    <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 border-b border-[rgba(30,34,51,0.08)] bg-[#fffdf7]/86 backdrop-blur-xl">
+      <div className="container-pyn flex h-[72px] items-center justify-between gap-5">
         <SiteLogo />
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
           {navGroups.map((group) => (
@@ -181,7 +181,7 @@ export function SiteHeader() {
             exit={{ opacity: 0, y: -12 }}
             className="border-t border-[rgba(30,34,51,0.08)] bg-[#fffdf7] lg:hidden"
           >
-            <div className="container-pyne max-h-[calc(100vh-72px)] overflow-y-auto py-3">
+            <div className="container-pyn max-h-[calc(100vh-72px)] overflow-y-auto py-3">
               {navGroups.map((group) => (
                 <div className="py-3" key={group.title}>
                   <Link
